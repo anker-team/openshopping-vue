@@ -57,31 +57,31 @@ export default {
                     state:'待付款',
                     products:[
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
                         },
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:1
                         },
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
                         },
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
                         },
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
@@ -94,7 +94,7 @@ export default {
                     state:'待收货',
                     products:[
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
@@ -107,7 +107,7 @@ export default {
                     state:'已完成',
                     products:[
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2
@@ -120,7 +120,7 @@ export default {
                     state:'已取消',
                     products:[
                         {
-                            imageURL:'https://pop.nosdn.127.net/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                            imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                             title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                             price:'499',
                             quantity:2

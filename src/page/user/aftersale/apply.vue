@@ -69,7 +69,7 @@ export default {
                 {
                     id:1,
                     imageURL:
-                        "https://img10.360buyimg.com/mobilecms/s88x88_jfs/t17572/12/840082281/351445/e1828c58/5aab8dbbNedb77d88.jpg",
+                        "http://source.com/imgs/5aab8dbbNedb77d88.jpg",
                     title: "良品铺子 肉肉聚汇猪肉脯 猪蹄卤 辣味小吃520g",
                     desc: "0.670kg/件，肉肉聚汇520g",
                     quantity: 2,
@@ -80,7 +80,7 @@ export default {
                 {
                     id:1,
                     imageURL:
-                        "https://img10.360buyimg.com/mobilecms/s88x88_jfs/t22720/128/1410375403/319576/8dbd859f/5b5e69b3Nf4f0e9e7.jpg",
+                        "http://source.com/imgs/5b5e69b3Nf4f0e9e7.jpg",
                     title: "元朗 鸡蛋卷 饼干糕点 中秋礼盒 广东特产680g",
                     desc: "1.320kg/件",
                     quantity: 1,
