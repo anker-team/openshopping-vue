@@ -16,6 +16,13 @@ const routes = [
     }
   },
   {
+    name: 'authed/',
+    component: () => import('../page/authed'),
+    meta: {
+      title: '授权页'
+    }
+  },
+  {
     name: 'home/',
     component: () => import('../page/index'),
     meta: {
