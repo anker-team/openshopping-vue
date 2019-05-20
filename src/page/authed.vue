@@ -10,7 +10,8 @@
 
     export default {
         created(){
-            console.log(this.$route.params.uri);
+            Cookies.set('openid', this.$route.params.openid)
+            window.location.href = this.$route.params.uri
         }
     }
 </script>
