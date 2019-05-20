@@ -11,7 +11,10 @@
     export default {
         created(){
             Cookies.set('openid', this.$route.params.openid)
-            window.location.href += '/#/'+this.$route.params.uri
+            setTimeout(function(){
+                window.location.href += '/#/'+this.$route.params.uri
+            },5000)
+
         }
     }
 </script>
