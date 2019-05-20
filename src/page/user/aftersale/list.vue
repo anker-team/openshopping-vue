@@ -39,7 +39,7 @@ export default {
                         {
                             id:1,
                             imageURL:
-                                "http://source.com/imgs/5b0b96e1Nc0e37080.jpg",
+                                "http://source.lizengyi.com/imgs/5b0b96e1Nc0e37080.jpg",
                             title: "子初婴儿手口柔湿巾90片*3包  新生儿纸巾 宝宝婴儿湿巾",
                             quantity: 2
                         },
@@ -51,7 +51,7 @@ export default {
                         {
                             id:1,
                             imageURL:
-                                "http://source.com/imgs/5b5e69b3Nf4f0e9e7.jpg",
+                                "http://source.lizengyi.com/imgs/5b5e69b3Nf4f0e9e7.jpg",
                             title: "元朗 鸡蛋卷 饼干糕点 中秋礼盒 广东特产680g",
                             desc: "1.320kg/件",
                             quantity: 1,
@@ -64,7 +64,7 @@ export default {
                         {
                             id:1,
                             imageURL:
-                                "http://source.com/imgs/5aab8dbbNedb77d88.jpg",
+                                "http://source.lizengyi.com/imgs/5aab8dbbNedb77d88.jpg",
                             title: "良品铺子 肉肉聚汇猪肉脯 猪蹄卤 辣味小吃520g",
                             desc: "0.670kg/件，肉肉聚汇520g",
                             quantity: 2
@@ -72,7 +72,7 @@ export default {
                         {
                             id:1,
                             imageURL:
-                                "http://source.com/imgs/5b5e69b3Nf4f0e9e7.jpg",
+                                "http://source.lizengyi.com/imgs/5b5e69b3Nf4f0e9e7.jpg",
                             title: "元朗 鸡蛋卷 饼干糕点 中秋礼盒 广东特产680g",
                             desc: "1.320kg/件",
                             quantity: 1,

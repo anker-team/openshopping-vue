@@ -103,7 +103,7 @@ export default {
         desc: '3.18kg/件',
         price: '200.00',
         quantity: 1,
-        imageURL: 'http://source.com/imgs/2f9a36046449dafb8608e99990b3c205.jpeg',
+        imageURL: 'http://source.lizengyi.com/imgs/2f9a36046449dafb8608e99990b3c205.jpeg',
         imageTag:'比加入时降5元',
       }, {
         id: '2',
@@ -111,7 +111,7 @@ export default {
         desc: '约600g',
         price: '690.00',
         quantity: 1,
-        imageURL: 'http://source.com/imgs/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg',
+        imageURL: 'http://source.lizengyi.com/imgs/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg',
           gift: [
             {
               title: "星巴克（Starbucks）星冰乐小熊吊饰星巴克（Starbucks）星冰乐小熊吊饰",
@@ -128,7 +128,7 @@ export default {
         desc: '约680g/3个',
         price: '2680.00',
         quantity: 1,
-        imageURL: 'http://source.com/imgs/320454216bbe9e25c7651e1fa51b31fd.jpeg'
+        imageURL: 'http://source.lizengyi.com/imgs/320454216bbe9e25c7651e1fa51b31fd.jpeg'
       }]
     };
   },

@@ -39,19 +39,19 @@
             <van-badge title="活动图书" @click="onClick" />
         </van-badge-group>
         <div class="content" :style="'width:'+fullWidth+'px;height:'+(fullHeight-7)+'px'" >
-            <img src="http://source.com/imgs/e38fc2f7c2ddfec2.jpg" />
+            <img src="http://source.lizengyi.com/imgs/e38fc2f7c2ddfec2.jpg" />
             <div class="category-div">
                 <h4>常用分类</h4>
                 <ul >
                     <li>
                       <router-link to="/search?keyword=xxxx">
-                        <img src="http://source.com/imgs/5a167b8cNdcf71ae5.jpg">
+                        <img src="http://source.lizengyi.com/imgs/5a167b8cNdcf71ae5.jpg">
                         <span>蓝牙耳机</span>
                       </router-link>
                     </li>
                     <li>
                         <a >
-                            <img src="http://source.com/imgs/5a1692ebN8ae73077.jpg">
+                            <img src="http://source.lizengyi.com/imgs/5a1692ebN8ae73077.jpg">
                             <span>iPhone</span>
                         </a>
                     </li>
@@ -64,21 +64,21 @@
                     <li v-for="(item, index) in categorylist" :key="index">
                         <a><img :src="item.img"><span>{{item.typeName}}</span></a>
                     </li>
-<!--                    <li><a ><img src="http://source.com/imgs/5b054fedN2ba90518.jpg"><span>手机</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b05522dNa2aae1bb.png"><span>耳机</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b48802aN13fe73de.png"><span>剃须刀</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b0565a7N8dbc0017.png"><span>路由器</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/13b099f187576d8c.png"><span>月饼</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/1e7de6987578dcdd.jpg" ><span>牛奶</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/6c7c2f9857736c65.jpg"><span>男士内裤</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/86c6bca8f4fe1efa.png"><span>小米8</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/9e118f12705f52bb.png"><span>大闸蟹</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b7693eeNf6883734.png"><span>三只松鼠</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b76990bNde226fbc.png"><span>充电宝</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b055000N410a7553.png"><span>空调</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/5b055555N9245f8aa.jpg"><span>电饭煲</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/99f72d51b8f195ed.jpg"><span>电话手表</span></a></li>-->
-<!--                    <li><a ><img src="http://source.com/imgs/b1a627b92323b5ed.png"><span>华为</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b054fedN2ba90518.jpg"><span>手机</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b05522dNa2aae1bb.png"><span>耳机</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b48802aN13fe73de.png"><span>剃须刀</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b0565a7N8dbc0017.png"><span>路由器</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/13b099f187576d8c.png"><span>月饼</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/1e7de6987578dcdd.jpg" ><span>牛奶</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/6c7c2f9857736c65.jpg"><span>男士内裤</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/86c6bca8f4fe1efa.png"><span>小米8</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/9e118f12705f52bb.png"><span>大闸蟹</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b7693eeNf6883734.png"><span>三只松鼠</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b76990bNde226fbc.png"><span>充电宝</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b055000N410a7553.png"><span>空调</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b055555N9245f8aa.jpg"><span>电饭煲</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/99f72d51b8f195ed.jpg"><span>电话手表</span></a></li>-->
+<!--                    <li><a ><img src="http://source.lizengyi.com/imgs/b1a627b92323b5ed.png"><span>华为</span></a></li>-->
                     <div style="clear:both">
                     </div>
                 </ul>   

@@ -186,20 +186,20 @@ export default {
             products:[
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'13.00',
                 },
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'499.00',
                     tags:['满199减100','2件起购'],
                 },
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'499.00',
                     tags:['新品'],
@@ -207,7 +207,7 @@ export default {
                 },
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'499.00',
                     tags:['赠'],
@@ -215,13 +215,13 @@ export default {
                 },
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'15.00',
                 },
                 {
                     id:1,
-                    imageURL:'http://source.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
+                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
                     title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
                     price:'125.50',
                 },

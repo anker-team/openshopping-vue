@@ -13,7 +13,7 @@ export default {
             id: '30349',
             name: '天蓝色',
             imgUrl:
-              'http://source.com/imgs/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg'
+              'http://source.lizengyi.com/imgs/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg'
           }
         ],
         k_s: 's1',
@@ -135,7 +135,7 @@ export default {
   goods_info: {
     title: '测试商品',
     picture:
-      'http://source.com/imgs/Fs_OMbSFPa183sBwvG_94llUYiLa.jpeg?imageView2/2/w/100/h/100/q/75/format/jpg',
+      'http://source.lizengyi.com/imgs/Fs_OMbSFPa183sBwvG_94llUYiLa.jpeg?imageView2/2/w/100/h/100/q/75/format/jpg',
     price: 1,
     origin: ''
   }

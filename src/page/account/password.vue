@@ -1,7 +1,7 @@
 <template>
     <div>
       <headerNav title="登录"/>
-      <div style="background:url(http://source.com/imgs/f866dd18-12f0-4bb2-be6d-5cac85cf2627.png) center 18px no-repeat;background-size:161px;">
+      <div style="background:url(http://source.lizengyi.com/imgs/f866dd18-12f0-4bb2-be6d-5cac85cf2627.png) center 18px no-repeat;background-size:161px;">
           <div style="padding-top: 70px;">
             <van-cell-group>
                 <van-field

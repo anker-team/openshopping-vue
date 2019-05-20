@@ -17,9 +17,9 @@
       
       <van-cell   @click="onClickShowTag" class="goods-tag" >
         <template slot="title" style="font-size:10px;">
-            <img src="http://source.com/imgs/ba8a4c2fdaa54f82a45261293c116af61419663676663i46n3jlh10028.png"/>
+            <img src="http://source.lizengyi.com/imgs/ba8a4c2fdaa54f82a45261293c116af61419663676663i46n3jlh10028.png"/>
             <span >挪威品牌</span>
-            <img src="http://source.com/imgs/13bd59e6e29a4f06b278c586629e690d.png" />
+            <img src="http://source.lizengyi.com/imgs/13bd59e6e29a4f06b278c586629e690d.png" />
             <span >跨境商品</span>
             <van-icon name="passed" color="red" />
             <span >次日达</span>
@@ -182,10 +182,10 @@ export default {
         express: '免运费',
         remain: 19,
         thumb: [
-          'http:source.com/imgs/e5a5a02309a41f9f5def56684808d9ae.jpeg',
-          'http:source.com/imgs/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
+          'http:source.lizengyi.com/imgs/e5a5a02309a41f9f5def56684808d9ae.jpeg',
+          'http:source.lizengyi.com/imgs/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
         ],
-        info:'<p style="text-align:center;"><img src="http://source.com/imgs/ac19460151ee4d95a6657202bcfc653c1531470912089jjjq8ml410763.jpg" ></p><p style="text-align:center;"><img src="http://source.com/imgs/2a91cfad22404e5498d347672b1440301531470912182jjjq8mnq10764.jpg" ></p><p style="text-align:center;"><img src="http://source.com/imgs/caddd5a213de4c1cb1347c267e8275731531470912412jjjq8mu410765.jpg" ></p>',
+        info:'<p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/ac19460151ee4d95a6657202bcfc653c1531470912089jjjq8ml410763.jpg" ></p><p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/2a91cfad22404e5498d347672b1440301531470912182jjjq8mnq10764.jpg" ></p><p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/caddd5a213de4c1cb1347c267e8275731531470912412jjjq8mu410765.jpg" ></p>',
       },
       showBase: false,
       showCustom: false,
