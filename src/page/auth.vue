@@ -13,7 +13,7 @@
     export default {
         created(){
             if (typeof(Cookies.get('openid')) === 'undefined') {
-                this.$route.push('http://api.lizengyi.com/wechatproxy.php?appid=wxf1e615ca4cb5c701&redirect_uri=http://api.lizengyi.com/index.php?s=index/Api/saveUserInfo')
+                window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf1e615ca4cb5c701&redirect_uri='+encodeURIComponent('http://api.lizengyi.com/index.php?s=index/Api/saveUserInfo')
             }
         }
     }
