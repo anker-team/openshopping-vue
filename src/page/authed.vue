@@ -11,8 +11,7 @@
     export default {
         created(){
             Cookies.set('openid', this.$route.params.openid)
-            alert(window.location.href + '/#/'+this.$route.params.uri)
-		
+		    this.$router.push(this.$route.params.uri)
         }
     }
 </script>
