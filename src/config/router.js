@@ -6,10 +6,17 @@ Vue.use(Router);
 const routes = [
   {
     path: '*',
-    redirect: '/home'
+    redirect: 'auth'
   },
   {
-    name: 'home',
+    name: 'auth/',
+    component: () => import('../page/auth'),
+    meta: {
+      title: '授权'
+    }
+  },
+  {
+    name: 'home/',
     component: () => import('../page/index'),
     meta: {
       title: '首页'
