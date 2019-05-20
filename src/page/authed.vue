@@ -11,7 +11,7 @@
     export default {
         created(){
             Cookies.set('openid', this.$route.params.openid)
-		    this.$router.push(this.$route.params.uri)
+		    window.location.href = 'http://book.lizengyi.com/#/'+ this.$route.params.uri
         }
     }
 </script>
