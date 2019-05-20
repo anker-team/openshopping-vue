@@ -21,6 +21,7 @@
         <cube v-if="item.Code=='Cube'" :data="item.ParameterDictionary" ></cube>
 
         <product v-if="item.Code=='Product'" :data="item" ></product>
+        <product1 v-if="item.Code=='Product1'" :data="item"></product1>
     </div>
 
 </div>
@@ -37,6 +38,7 @@ import cube from "../../components/page/cube.vue";
 import imageAd from "../../components/page/imageAd.vue";
 import imageText from "../../components/page/imageText.vue";
 import product from "../../components/page/product.vue";
+import product1 from "../../components/page/product1.vue";
 import { GetPage } from "../../api/page.js";
 
 export default {
@@ -51,7 +53,8 @@ export default {
         cube,
         [imageAd.name]:imageAd,
         imageText,
-        product
+        product,
+        product1
     },
     data:function(){
         return{

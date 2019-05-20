@@ -283,6 +283,22 @@
                 "productcategoryid": "",
                 "producttagid": ""
             }
+        },
+        {
+            "PageSectionId": 2523,
+            "Code": "Product1",
+            "ParameterDictionary": {
+                "type": "2",
+                "source": "1",
+                "showsort": "0",
+                "shownumber": "6",
+                "tag": "0",
+                "showtype": "simple",
+                "buttonvalue": "购买",
+                "productids": "4,1,3",
+                "productcategoryid": "",
+                "producttagid": ""
+            }
         }
     ]
 }
