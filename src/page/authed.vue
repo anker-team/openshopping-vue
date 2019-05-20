@@ -12,7 +12,11 @@
         created(){
             Cookies.set('openid', this.$route.params.openid)
             Cookies.set('userid', this.$route.params.userid)
-		    window.location.href = 'http://book.lizengyi.com/#/'+ this.$route.params.uri
+            var uri = this.$route.params.uri
+            setTimeout(function(){
+                window.location.href = 'http://book.lizengyi.com/#/'+ uri
+            }, 300)
+
         }
     }
 </script>
