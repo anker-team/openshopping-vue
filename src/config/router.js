@@ -16,7 +16,7 @@ const routes = [
     }
   },
   {
-    name: 'authed/uri/:uri/openid/:openid',
+    name: 'uri/:uri/openid/:openid',
     component: () => import('../page/authed'),
     meta: {
       title: '授权页'
