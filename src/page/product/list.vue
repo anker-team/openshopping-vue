@@ -166,6 +166,7 @@
         <div v-for="(product,i) in booklist" :key="i">
           <product-card :product='product' @click="showProduct(product)" />
         </div>
+        <span class="infinite-scroll-text">{{tips}}</span>
     </div>
 </template>
 
@@ -185,7 +186,8 @@ export default {
       filtershow: false,
       booklist: [],
       scloll:true,
-      page:1
+      page:1,
+      tips: "下滑加载"
     };
   },
   methods: {
@@ -204,7 +206,7 @@ export default {
     },
       scrollBottom() {
           if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight))){
-              alert('aa')
+              this.tips = '努力加载中...';
           }
       }
   },
