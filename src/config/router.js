@@ -165,7 +165,7 @@ const routes = [
     }
   },
   {
-    path: '/search',
+    path: '/search/:typeid',
     component: () => import('../page/product/list'),
     meta: {
       title: '商品列表'

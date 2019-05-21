@@ -214,7 +214,7 @@ export default {
                   params: {
                       s: "index/Api/getBookList",
                       page: this.page,
-                      typeID: 197,
+                      typeID: this.$route.params.typeid,
                   }
               }).then(response => {
                   for(const value of response.data){
@@ -234,7 +234,7 @@ export default {
             params: {
                 s: "index/Api/getBookList",
                 page: 1,
-                typeID: 197,
+                typeID: this.$route.params.typeid,
             }
         }).then(response => {
             this.booklist = response.data
