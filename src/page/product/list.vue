@@ -213,7 +213,6 @@ export default {
         window.addEventListener('scroll', this.scrollBottom)
     },
     created:function(){
-        window.addEventListener('scroll', this.scrollBottom)
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/getBookList",
