@@ -1,5 +1,5 @@
 <template>
-    <div class="product-list">
+    <div class="product-list" @scroll="handleScroll()">
         <searchtop/>
         <div class="filterbar">
             <ul :class="filtersort?'show':''">
@@ -163,7 +163,7 @@
             </van-popup>
         </div>
 
-        <div v-for="(product,i) in products" :key="i">
+        <div v-for="(product,i) in booklist" :key="i">
           <product-card :product='product' @click="showProduct(product)" />
         </div>
     </div>
@@ -171,6 +171,7 @@
 
 <script>
 import searchtop from "../../components/search/searchtop";
+import axios from "axios";
 
 export default {
   components: {
@@ -182,50 +183,9 @@ export default {
       filterindex: 0,
       filtersort: false,
       filtershow: false,
-      
-            products:[
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'13.00',
-                },
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'499.00',
-                    tags:['满199减100','2件起购'],
-                },
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'499.00',
-                    tags:['新品'],
-                    imageTag:'仅剩1件',
-                },
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'499.00',
-                    tags:['赠'],
-                    imageTag:'预约',
-                },
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'15.00',
-                },
-                {
-                    id:1,
-                    imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
-                    title:'BEYOND博洋家纺 床上套件 秋冬保暖纯棉床单被套 双人被罩 磨毛全棉印花床品四件套',
-                    price:'125.50',
-                },
-            ]
+      booklist: [],
+      scloll:true,
+      page:1
     };
   },
   methods: {
@@ -241,8 +201,30 @@ export default {
     },
     showProduct(product){
         this.$router.push('/product/'+product.id);
+    },
+      scrollBottom() {
+          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight))){
+              alert('aa')
+          }
+      }
+  },
+    mounted () {
+        // 添加滚动事件，检测滚动到页面底部
+        window.addEventListener('scroll', this.scrollBottom)
+    },
+    created:function(){
+        window.addEventListener('scroll', this.scrollBottom)
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/getBookList",
+                page: 1,
+                typeID: 197,
+            }
+        }).then(response => {
+            this.booklist = response.data
+            console.log(response.data)
+        });
     }
-  }
 };
 </script>
 

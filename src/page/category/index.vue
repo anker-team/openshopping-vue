@@ -40,24 +40,24 @@
         </van-badge-group>
         <div class="content" :style="'width:'+fullWidth+'px;height:'+(fullHeight-7)+'px'" >
             <img src="http://source.lizengyi.com/imgs/e38fc2f7c2ddfec2.jpg" />
-            <div class="category-div">
-                <h4>常用分类</h4>
-                <ul >
-                    <li>
-                      <router-link to="/search?keyword=xxxx">
-                        <img src="http://source.lizengyi.com/imgs/5a167b8cNdcf71ae5.jpg">
-                        <span>蓝牙耳机</span>
-                      </router-link>
-                    </li>
-                    <li>
-                        <a >
-                            <img src="http://source.lizengyi.com/imgs/5a1692ebN8ae73077.jpg">
-                            <span>iPhone</span>
-                        </a>
-                    </li>
-                    <div style="clear:both"></div>
-                </ul>
-            </div>
+<!--            <div class="category-div">-->
+<!--                <h4>常用分类</h4>-->
+<!--                <ul >-->
+<!--                    <li>-->
+<!--                      <router-link to="/search?keyword=xxxx">-->
+<!--                        <img src="http://source.lizengyi.com/imgs/5a167b8cNdcf71ae5.jpg">-->
+<!--                        <span>蓝牙耳机</span>-->
+<!--                      </router-link>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a >-->
+<!--                            <img src="http://source.lizengyi.com/imgs/5a1692ebN8ae73077.jpg">-->
+<!--                            <span>iPhone</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <div style="clear:both"></div>-->
+<!--                </ul>-->
+<!--            </div>-->
             <div class="category-div">
                 <h4>热门分类</h4>
                 <ul>

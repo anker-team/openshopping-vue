@@ -11,8 +11,12 @@
                 <p v-if="product.imageTag!=null&&product.imageTag!=''" class="image_tag">{{product.imageTag}}</p>
             </template>
             <template slot="tags">
+                <div class="author" v-if="product.author!=null&&product.price!=''" >
+                    <span>{{product.author}}</span>
+                </div>
                 <p class="price" v-if="product.price!=null&&product.price!=''" >
                     ￥<span>{{product.price}}</span>
+                    <em class="price_y">￥{{product.price_y}}</em>
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
                 <van-stepper v-if="iscard" v-model="product.quantity" :max="product.max"  :min="product.min" />
@@ -67,7 +71,7 @@ export default {
       color: #e93b3d;
       font-size: 10px;
         overflow: hidden;
-        height: 18px;
+        height: 24px;
       span {
         font-size: 16px;
             margin-right: 5px;
@@ -75,6 +79,15 @@ export default {
       .van-tag{
         font-size: 12px;
       }
+    }
+    .price_y {
+        color:#b6bcb8;
+        text-decoration:line-through;
+    }
+    .author{
+        color:#666666;
+        font-size:12px;
+        line-height: 14px;
     }
     .van-stepper{
         position: absolute;
