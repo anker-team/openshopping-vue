@@ -166,7 +166,9 @@
         <div v-for="(product,i) in booklist" :key="i">
           <product-card :product='product' @click="showProduct(product)" />
         </div>
-        <span class="infinite-scroll-text">{{tips}}</span>
+        <div style="text-align:center">
+            <img :src="imgUrl">
+        </div>
     </div>
 </template>
 
@@ -187,7 +189,7 @@ export default {
       booklist: [],
       scroll:true,
       page:1,
-      tips: "下滑加载"
+      imgUrl: require("../../assets/images/load.gif")
     };
   },
   methods: {
@@ -207,7 +209,6 @@ export default {
       scrollBottom() {
           if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight) && this.scroll === true)){
               this.scroll = false;
-              this.tips = '努力加载中...';
               this.page+=1;
               axios.get("http://api.lizengyi.com/index.php",{
                   params: {
