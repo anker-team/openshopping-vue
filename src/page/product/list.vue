@@ -185,7 +185,7 @@ export default {
       filtersort: false,
       filtershow: false,
       booklist: [],
-      scloll:true,
+      scroll:true,
       page:1,
       tips: "下滑加载"
     };
@@ -205,7 +205,8 @@ export default {
         this.$router.push('/product/'+product.id);
     },
       scrollBottom() {
-          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight))){
+          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight) && this.scroll === true)){
+              this.scroll = false;
               this.tips = '努力加载中...';
               this.page+=1;
               axios.get("http://api.lizengyi.com/index.php",{
@@ -215,8 +216,10 @@ export default {
                       typeID: 197,
                   }
               }).then(response => {
-                  this.booklist.push(response.data.join(","))
-                  console.log(this.booklist)
+                  for(const value of response.data){
+                      this.booklist.push(value)
+                  }
+                  this.scroll = true
               });
           }
       }
