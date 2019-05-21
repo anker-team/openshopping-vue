@@ -62,7 +62,7 @@
                 <h4>热门分类</h4>
                 <ul>
                     <li v-for="(item, index) in categorylist" :key="index">
-                        <a :href="'http://book.lizengyi.com/#/search/'+item.typeID"><img :src="item.img"><span>{{item.typeName}}</span></a>
+                        <a :href="'http://book.lizengyi.com/#/search/'+item.id"><img :src="item.img"><span>{{item.typeName}}</span></a>
                     </li>
 <!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b054fedN2ba90518.jpg"><span>手机</span></a></li>-->
 <!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b05522dNa2aae1bb.png"><span>耳机</span></a></li>-->
