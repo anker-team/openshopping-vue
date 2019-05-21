@@ -207,6 +207,15 @@ export default {
       scrollBottom() {
           if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight))){
               this.tips = '努力加载中...';
+              axios.get("http://api.lizengyi.com/index.php",{
+                  params: {
+                      s: "index/Api/getBookList",
+                      page: this.page+1,
+                      typeID: 197,
+                  }
+              }).then(response => {
+                  this.booklist.push(response.data)
+              });
           }
       }
   },
@@ -223,7 +232,6 @@ export default {
             }
         }).then(response => {
             this.booklist = response.data
-            console.log(response.data)
         });
     }
 };
