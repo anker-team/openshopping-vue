@@ -216,6 +216,7 @@ export default {
                   }
               }).then(response => {
                   this.booklist.push(response.data.join(","))
+                  console.log(this.booklist)
               });
           }
       }
