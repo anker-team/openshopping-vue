@@ -62,7 +62,7 @@
                 <h4>热门分类</h4>
                 <ul>
                     <li v-for="(item, index) in categorylist" :key="index">
-                        <a :href="'http://book.lizengyi.com/#/search/'+item.id"><img :src="item.img"><span>{{item.typeName}}</span></a>
+                        <a :href="'http://'+host+'/#/search/'+item.id"><img :src="item.img"><span>{{item.typeName}}</span></a>
                     </li>
 <!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b054fedN2ba90518.jpg"><span>手机</span></a></li>-->
 <!--                    <li><a ><img src="http://source.lizengyi.com/imgs/5b05522dNa2aae1bb.png"><span>耳机</span></a></li>-->
@@ -108,7 +108,8 @@ export default {
           1, 33, 66, 86, 120, 160, 171, 194, 222, 236, 250, 263, 283, 299, 317, 337, 354, 370,
           381, 397, 419, 452, 468, 481, 501, 523, 555, 568
         ],
-        categorylist: []
+        categorylist: [],
+        host: window.location.host
     };
   },
   methods: {
