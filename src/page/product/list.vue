@@ -255,7 +255,6 @@ export default {
 <style lang="less">
 .product-list{
     .additional .price{
-        position: absolute;
         bottom: 6px;
         height: 34px;
     }
