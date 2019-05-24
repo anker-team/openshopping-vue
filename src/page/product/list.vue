@@ -223,6 +223,7 @@ export default {
                       this.booklist.push(value)
                   }
                   this.status = response.data.status
+                  console.log(response.data.status)
                   this.scroll = true
               });
           }
@@ -245,8 +246,6 @@ export default {
             }
         }).then(response => {
             this.status = response.data.status
-            console.log(this.status)
-            console.log(response.data.result)
             this.booklist = response.data.result
         });
     }
