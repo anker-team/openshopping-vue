@@ -10,7 +10,7 @@
         </van-search>
         <van-badge-group :active-key="activeKey" class="tab" :style="'height:'+fullHeight+'px'">
             <van-badge title="热门推荐" @click="onClick" />
-            <van-badge title="计算机与网络" @click="onClick" />
+            <van-badge title="计算机" @click="onClick" />
             <van-badge title="管理" @click="onClick" />
             <van-badge title="经济金融" @click="onClick" />
             <van-badge title="科技工程" @click="onClick" />
@@ -28,7 +28,7 @@
             <van-badge title="心理" @click="onClick" />
             <van-badge title="体育保健" @click="onClick" />
             <van-badge title="收藏鉴赏" @click="onClick" />
-            <van-badge title="汽车与交通运输" @click="onClick" />
+            <van-badge title="交通运输" @click="onClick" />
             <van-badge title="法律" @click="onClick" />
             <van-badge title="医学卫生" @click="onClick" />
             <van-badge title="自然科学" @click="onClick" />
@@ -40,24 +40,6 @@
         </van-badge-group>
         <div class="content" :style="'width:'+fullWidth+'px;height:'+(fullHeight-7)+'px'" >
             <img src="http://source.lizengyi.com/imgs/e38fc2f7c2ddfec2.jpg" />
-<!--            <div class="category-div">-->
-<!--                <h4>常用分类</h4>-->
-<!--                <ul >-->
-<!--                    <li>-->
-<!--                      <router-link to="/search?keyword=xxxx">-->
-<!--                        <img src="http://source.lizengyi.com/imgs/5a167b8cNdcf71ae5.jpg">-->
-<!--                        <span>蓝牙耳机</span>-->
-<!--                      </router-link>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a >-->
-<!--                            <img src="http://source.lizengyi.com/imgs/5a1692ebN8ae73077.jpg">-->
-<!--                            <span>iPhone</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <div style="clear:both"></div>-->
-<!--                </ul>-->
-<!--            </div>-->
             <div class="category-div">
                 <h4>热门分类</h4>
                 <ul>

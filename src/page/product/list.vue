@@ -189,7 +189,8 @@ export default {
       booklist: [],
       scroll:true,
       page:1,
-      imgUrl: require("../../assets/images/load.gif")
+      imgUrl: require("../../assets/images/load.gif"),
+      status:1
     };
   },
   methods: {
@@ -207,7 +208,7 @@ export default {
         this.$router.push('/product/'+id);
     },
       scrollBottom() {
-          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight) && this.scroll === true)){
+          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight) && this.scroll === true && this.status === 1)){
               this.scroll = false;
               this.page+=1;
               axios.get("http://api.lizengyi.com/index.php",{
@@ -217,8 +218,8 @@ export default {
                       typeID: this.$route.params.id,
                   }
               }).then(response => {
-                  for(const value of response.data){
-                      this.booklist.push(value)
+                  for(const value of response.data.result){
+                      this.booklist.result.push(value)
                   }
                   this.scroll = true
               });
@@ -237,7 +238,8 @@ export default {
                 typeID: this.$route.params.id,
             }
         }).then(response => {
-            this.booklist = response.data
+            this.status = response.data.status
+            this.booklist = response.data.result
         });
     }
 };
