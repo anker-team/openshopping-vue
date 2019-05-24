@@ -1,19 +1,27 @@
 <template>
   <div class="goods">
      <headerNav title="商品详情"/>
-    <van-swipe class="goods-swipe" :autoplay="3000">
-      <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb" >
+    <van-swipe class="goods-swipe" :autoplay="3000" :show-indicators="false">
+      <van-swipe-item v-for="thumb in imgs" :key="thumb">
+        <div style="width: 7.5rem; height: 6rem;">
+            <img :src="thumb" style="width: 5rem; height: 6rem;margin:0 auto;">
+        </div>
       </van-swipe-item>
     </van-swipe>
 
     <van-cell-group>
       <van-cell>
-        <span class="goods-price">{{ formatPrice(goods.price) }}</span>
-        <span class="goods-market-price">{{ formatPrice(goods.market_price) }}</span>
-        <div class="goods-title">{{ goods.title }}</div>
-        <div class="goods-subtit">{{goods.subtitle}}</div>
+        <span class="goods-price">{{ formatPrice(detail.price) }}</span>
+        <span class="goods-market-price">{{ formatPrice(detail.price_y) }}</span>
+        <div class="goods-title">{{ detail.title }}</div>
+        <div class="goods-subtit" v-html="detail.j_summary"></div>
       </van-cell>
+        <van-cell>
+            <div class="goods-title">作者: {{ detail.author }}</div>
+            <div class="goods-title">出版社: {{ detail.publisher }}</div>
+            <div class="goods-title">出版时间: {{ detail.publishtime }}</div>
+            <div class="goods-title">ISBN: {{ detail.isbn }}</div>
+        </van-cell>
       
       <van-cell   @click="onClickShowTag" class="goods-tag" >
         <template slot="title" style="font-size:10px;">
@@ -65,8 +73,17 @@
     </van-cell-group>
     
     <div class="goods-info">
-        <p class="goods-info-title" >图文详情</p>
-        <div v-html="goods.info"></div>
+        <p class="goods-info-title" >图书详情</p>
+<!--        <div v-html="goods.info"></div>-->
+        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------图书简介--------</p>
+        <div class="goods-subtit" v-html="detail.j_section"></div>
+        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------图书目录--------</p>
+        <div class="goods-subtit" v-html="detail.j_catalog"></div>
+        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------编辑推荐语--------</p>
+        <div class="goods-subtit" v-html="detail.j_commend"></div>
+        <div>
+
+        </div>
     </div>
     <van-goods-action>
         
@@ -147,7 +164,7 @@
           v-model="showBase"
           :sku="skuData.sku"
           :goods="skuData.goods_info"
-          :goods-id="skuData.goods_id"
+          :goods-id="detail.id"
           :hide-stock="skuData.sku.hide_stock"
           :quota="skuData.quota"
           :quota-used="skuData.quota_used"
@@ -165,39 +182,24 @@
 
 <script>
 import skuData from '../../data/sku';
+import axios from "axios"
+import Cookies from "js-cookie";
 
 export default {
   components: {
   },
   data() {
-    this.skuData = skuData;
+    // this.skuData = skuData;
     return {
       show:false,
       showTag:false,
-      goods: {
-        title: '【每日一粒益智又长高】 Lifeline Care 儿童果冻鱼油DHA维生素D3聪明长高 软糖 30粒 2件装',
-        subtitle:'【品牌直采】Q弹美味，无腥味果冻鱼油，每粒含足量鱼油DHA，帮助视网膜和大脑健康发育，让你的宝宝明眼又聪明，同时补充400国际单位维生素D3，强壮骨骼和牙齿。特含DPA，让宝宝免疫力更强，没病来扰。',
-        price: 2680,
-        market_price:9999,
-        express: '免运费',
-        remain: 19,
-        thumb: [
-          'http:source.lizengyi.com/imgs/e5a5a02309a41f9f5def56684808d9ae.jpeg',
-          'http:source.lizengyi.com/imgs/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
-        ],
-        info:'<p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/ac19460151ee4d95a6657202bcfc653c1531470912089jjjq8ml410763.jpg" ></p><p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/2a91cfad22404e5498d347672b1440301531470912182jjjq8mnq10764.jpg" ></p><p style="text-align:center;"><img src="http://source.lizengyi.com/imgs/caddd5a213de4c1cb1347c267e8275731531470912412jjjq8mu410765.jpg" ></p>',
-      },
       showBase: false,
       showCustom: false,
       showStepper: false,
       closeOnClickOverlay: true,
-      initialSku: {
-        s1: '30349',
-        s2: '1193'
-      },
-      customSkuValidator: (component) => {
-        return '请选择xxx';
-      },
+      // customSkuValidator: (component) => {
+      //   return '请选择xxx';
+      // },
       customStepperConfig: {
         quotaText: '单次限购100件',
         stockFormatter: (stock) => `剩余${stock}间`,
@@ -221,12 +223,34 @@ export default {
           });
         },
         uploadMaxSize: 3
-      }
+      },
+        detail: [],
+        skuData: {
+            sku: {
+                tree: [],
+                list: [],
+                price: '2.00',    //价格
+                market_price:'10.00',
+                stock_num: 227,   //库存
+                collection_id: 2261,
+                collection_price: 0,
+                none_sku: true,
+                sold_num: 0,
+                min_price: '1.00',
+                max_price: '1.00',
+                messages: [
+                ],
+                hide_stock: false
+            },
+            quote: 0,  //限购,0表示不限购
+            goods_info: {},
+        },
+        imgs: [],
     };
   },
   methods: {
     formatPrice(data) {
-      return '¥' + (data / 100).toFixed(2);
+      return '¥' + (data / 100 *100).toFixed(2);
     },
     onClickCart() {
       this.$router.push('/cart');
@@ -247,10 +271,59 @@ export default {
       this.$toast(JSON.stringify(data));
     },
     onAddCartClicked(data) {
-      this.$toast(JSON.stringify(data));
+        this.$toast.success('加入成功');
+        this.showBase=false;
+      //   axios.get("http://api.lizengyi.com/index.php",{
+      //       params: {
+      //           s: "index/Api/getDetailContent",
+      //           from: 'youluwang',
+      //           id: this.$route.params.id,
+      //       }
+      //   }).then(response => {
+      //       this.detail = response.data;
+      //       this.skuData.goods_info.title = this.detail.title;
+      //       this.skuData.goods_info.picture = this.detail.imageURL;
+      //       this.imgs = [
+      //           this.detail.imageURL,
+      //           this.detail.imageURL
+      //       ]
+      //       this.skuData.sku.price = this.detail.price
+      //       this.skuData.sku.stock_num = this.detail.kucun
+      //
+      //       console.log(this.goods_info)
+      //   });
+      //   console.log(data)
+      //   data.goodsId  //商品id
+      //   data.selectedNum  //选择数量
+      //   data.selectedSkuComb.stock_num  //库存
+      //   data.selectedSkuComb.price //价格
+      //   Cookies.get('userid') //用户id
+      //   this.detail.imgUrl
+      // this.$toast(JSON.stringify(data));
     },
 
-  }
+  },
+    created() {
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/getDetailContent",
+                from: 'youluwang',
+                id: this.$route.params.id,
+            }
+        }).then(response => {
+            this.detail = response.data;
+            this.skuData.goods_info.title = this.detail.title;
+            this.skuData.goods_info.picture = this.detail.imageURL;
+            this.imgs = [
+                this.detail.imageURL,
+                this.detail.imageURL
+            ]
+            this.skuData.sku.price = this.detail.price
+            this.skuData.sku.stock_num = this.detail.kucun
+
+            console.log(this.goods_info)
+        });
+    }
 };
 </script>
 

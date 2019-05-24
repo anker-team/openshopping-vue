@@ -9,6 +9,7 @@
         <div slot="action" @click="onSearch">搜索</div>
         </van-search>
         <van-badge-group :active-key="activeKey" class="tab" :style="'height:'+fullHeight+'px'">
+            <van-badge title="热门推荐" @click="onClick" />
             <van-badge title="计算机与网络" @click="onClick" />
             <van-badge title="管理" @click="onClick" />
             <van-badge title="经济金融" @click="onClick" />
@@ -36,7 +37,6 @@
             <van-badge title="宗教哲学" @click="onClick" />
             <van-badge title="教育考试" @click="onClick" />
             <van-badge title="工具书" @click="onClick" />
-            <van-badge title="活动图书" @click="onClick" />
         </van-badge-group>
         <div class="content" :style="'width:'+fullWidth+'px;height:'+(fullHeight-7)+'px'" >
             <img src="http://source.lizengyi.com/imgs/e38fc2f7c2ddfec2.jpg" />
@@ -105,8 +105,8 @@ export default {
         fullHeight: document.documentElement.clientHeight - 93,
         fullWidth: document.documentElement.clientWidth - 99,
         ids: [ //以及分类id数组
-          1, 33, 66, 86, 120, 160, 171, 194, 222, 236, 250, 263, 283, 299, 317, 337, 354, 370,
-          381, 397, 419, 452, 468, 481, 501, 523, 555, 568
+          1000, 1, 33, 66, 86, 120, 160, 171, 194, 222, 236, 250, 263, 283, 299, 317, 337, 354, 370,
+          381, 397, 419, 452, 468, 481, 501, 523, 555
         ],
         categorylist: [],
         host: window.location.host
@@ -137,7 +137,7 @@ export default {
             params: {
                 s: "index/Api/typeList",
                 level: 2,
-                typeID: 1
+                typeID: 1000
             }
         }).then(response => {
             this.categorylist = response.data
