@@ -166,8 +166,8 @@
         <div v-for="(product,i) in booklist" :key="i">
           <product-card :product='product' @click.native="showProduct(product.id)" />
         </div>
-        <div style="text-align:center" v-show="show">
-            <img :src="imgUrl">
+        <div style="text-align:center" v-show="isShow">
+            <img :src="imgUrl" >
         </div>
     </div>
 </template>
@@ -191,7 +191,7 @@ export default {
       page:1,
       imgUrl: require("../../assets/images/load.gif"),
       status:1,
-      show:true
+      isShow:true
     };
   },
   methods: {
@@ -225,7 +225,8 @@ export default {
                   this.scroll = true
               });
           }else {
-              this.show=false;
+              this.isShow=false;
+              this.$toast.success("全部加载完成")
           }
       }
   },
