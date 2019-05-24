@@ -220,7 +220,7 @@ export default {
                   }
               }).then(response => {
                   for(const value of response.data.result){
-                      this.booklist.result.push(value)
+                      this.booklist.push(value)
                   }
                   this.status = response.data.status
                   this.scroll = true
