@@ -209,7 +209,7 @@ export default {
         this.$router.push('/product/'+id);
     },
       scrollBottom() {
-          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight) && this.scroll === true && this.status === 1)){
+          if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight)) && this.scroll === true && this.status === 1){
               this.scroll = false;
               this.page+=1;
               axios.get("http://api.lizengyi.com/index.php",{
@@ -222,9 +222,11 @@ export default {
                   for(const value of response.data.result){
                       this.booklist.result.push(value)
                   }
+                  this.status = response.data.status
                   this.scroll = true
               });
-          }else {
+          }
+          if(this.status !== 1){
               this.isShow=false;
               this.$toast.success("全部加载完成")
           }
@@ -243,6 +245,8 @@ export default {
             }
         }).then(response => {
             this.status = response.data.status
+            console.log(this.status)
+            console.log(response.data.result)
             this.booklist = response.data.result
         });
     }
