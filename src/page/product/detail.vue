@@ -181,7 +181,7 @@
 </template>
 
 <script>
-import skuData from '../../data/sku';
+// import skuData from '../../data/sku';
 import axios from "axios"
 import Cookies from "js-cookie";
 
@@ -271,7 +271,7 @@ export default {
       this.$toast(JSON.stringify(data));
     },
     onAddCartClicked(data) {
-        console.log(Cookies.get('userid'))
+        alert(Cookies.get('userid'))
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/addGoodsCat",
