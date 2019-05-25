@@ -87,7 +87,7 @@
     </div>
     <van-goods-action>
         
-      <van-goods-action-mini-btn icon="like-o" @click="sorry">
+      <van-goods-action-mini-btn icon="like-o" @click="sorry" :icon-class="collColor">
         收藏
       </van-goods-action-mini-btn>
       <van-goods-action-mini-btn icon="cart" @click="onClickCart">
@@ -246,6 +246,8 @@ export default {
             goods_info: {},
         },
         imgs: [],
+        collection : false,   //是否收藏
+        collColor: "",
     };
   },
   methods: {
@@ -256,7 +258,23 @@ export default {
       this.$router.push('/cart');
     },
     sorry() {
-      Toast('暂无后续逻辑~');
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/addGoodsColl",
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+                from: this.detail.from,
+                goodsID: this.$route.params.id,
+                fangshi: this.collection === "yes" ? "no" : "yes"
+            }
+        }).then(response => {
+            this.collection = this.collection === "yes" ? "no" : "yes"
+            if (this.collection === "yes") {
+                this.collColor = "coll-color"
+                this.$toast.success("收藏成功")
+            } else {
+                this.collColor = ""
+            }
+        });
     },
     showPromotion() {
         this.show=true;
@@ -298,11 +316,13 @@ export default {
           loadingType: 'spinner',
           message: '加载中...'
       });
+      //商品详情页
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/getDetailContent",
                 from: 'youluwang',
                 id: this.$route.params.id,
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
             }
         }).then(response => {
             this.detail = response.data;
@@ -314,6 +334,11 @@ export default {
             ]
             this.skuData.sku.price = this.detail.price
             this.skuData.sku.stock_num = this.detail.kucun
+            //收藏
+            this.collection = this.detail.isColl
+            if (this.collection === "yes") {
+                    this.collColor = "coll-color"
+            }
             this.$toast.clear();
         });
     }
@@ -321,6 +346,9 @@ export default {
 </script>
 
 <style lang="less">
+.coll-color {
+    color: red;
+}
 .goods {
   padding-bottom: 50px;
   &-swipe {
