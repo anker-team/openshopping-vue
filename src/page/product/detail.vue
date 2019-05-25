@@ -271,7 +271,6 @@ export default {
       this.$toast(JSON.stringify(data));
     },
     onAddCartClicked(data) {
-        alert(Cookies.get('userid'))
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/addGoodsCat",
@@ -285,7 +284,6 @@ export default {
                 kucun: data.selectedSkuComb.stock_num
             }
         }).then(response => {
-            console.log(response.data.id)
             this.$toast.success('加入成功');
             this.showBase=false;
         });
@@ -310,7 +308,6 @@ export default {
             this.skuData.sku.price = this.detail.price
             this.skuData.sku.stock_num = this.detail.kucun
 
-            console.log(this.goods_info)
         });
     }
 };
