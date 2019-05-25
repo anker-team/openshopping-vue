@@ -291,6 +291,13 @@ export default {
 
   },
     created() {
+      this.$toast.loading({
+          duration: 0,       // 持续展示 toast
+          forbidClick: true, // 禁用背景点击
+          mask: true,        //是否显示遮罩层
+          loadingType: 'spinner',
+          message: '加载中...'
+      });
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/getDetailContent",
@@ -307,7 +314,7 @@ export default {
             ]
             this.skuData.sku.price = this.detail.price
             this.skuData.sku.stock_num = this.detail.kucun
-
+            this.$toast.clear();
         });
     }
 };

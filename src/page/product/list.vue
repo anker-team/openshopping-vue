@@ -227,7 +227,6 @@ export default {
                       this.booklist.push(value)
                   }
                   this.status = response.data.status
-                  console.log(response.data.status)
                   this.scroll = true
               });
           }
