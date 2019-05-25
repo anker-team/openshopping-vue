@@ -191,7 +191,8 @@ export default {
       page:1,
       imgUrl: require("../../assets/images/load.gif"),
       status:1,
-      isShow:true
+      isShow:true,
+      successShow: false
     };
   },
   methods: {
@@ -227,9 +228,10 @@ export default {
                   this.scroll = true
               });
           }
-          if(this.status !== 1){
+          if(this.status !== 1 && this.successShow === false){
               this.isShow=false;
               this.$toast.success("全部加载完成")
+              this.successShow = true
           }
       }
   },
