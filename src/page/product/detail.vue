@@ -2,7 +2,7 @@
   <div class="goods">
      <headerNav title="商品详情"/>
     <van-swipe class="goods-swipe" :autoplay="3000" :show-indicators="false">
-      <van-swipe-item v-for="thumb in imgs" :key="thumb">
+      <van-swipe-item v-for="(thumb, index) in imgs" :key="index">
         <div style="width: 7.5rem; height: 6rem;">
             <img :src="thumb" style="width: 5rem; height: 6rem;margin:0 auto;">
         </div>
@@ -271,35 +271,24 @@ export default {
       this.$toast(JSON.stringify(data));
     },
     onAddCartClicked(data) {
-        this.$toast.success('加入成功');
-        this.showBase=false;
-      //   axios.get("http://api.lizengyi.com/index.php",{
-      //       params: {
-      //           s: "index/Api/getDetailContent",
-      //           from: 'youluwang',
-      //           id: this.$route.params.id,
-      //       }
-      //   }).then(response => {
-      //       this.detail = response.data;
-      //       this.skuData.goods_info.title = this.detail.title;
-      //       this.skuData.goods_info.picture = this.detail.imageURL;
-      //       this.imgs = [
-      //           this.detail.imageURL,
-      //           this.detail.imageURL
-      //       ]
-      //       this.skuData.sku.price = this.detail.price
-      //       this.skuData.sku.stock_num = this.detail.kucun
-      //
-      //       console.log(this.goods_info)
-      //   });
-      //   console.log(data)
-      //   data.goodsId  //商品id
-      //   data.selectedNum  //选择数量
-      //   data.selectedSkuComb.stock_num  //库存
-      //   data.selectedSkuComb.price //价格
-      //   Cookies.get('userid') //用户id
-      //   this.detail.imgUrl
-      // this.$toast(JSON.stringify(data));
+        console.log(Cookies.get('userid'))
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/addGoodsCat",
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+                from: this.detail.from,
+                goodsID: data.goodsId,
+                num: data.selectedNum,
+                price: data.selectedSkuComb.price/100,
+                img: this.detail.imageURL,
+                title: this.detail.title,
+                kucun: data.selectedSkuComb.stock_num
+            }
+        }).then(response => {
+            console.log(response.data.id)
+            this.$toast.success('加入成功');
+            this.showBase=false;
+        });
     },
 
   },
