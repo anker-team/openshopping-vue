@@ -169,15 +169,18 @@
         <div style="text-align:center" v-show="isShow">
             <img :src="imgUrl" >
         </div>
+        <navigate/>
     </div>
 </template>
 
 <script>
 import searchtop from "../../components/search/searchtop";
 import axios from "axios";
+import Navigate from "../../components/footer/navigate";
 
 export default {
   components: {
+      Navigate,
     searchtop
   },
   data() {
