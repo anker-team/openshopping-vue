@@ -1,6 +1,6 @@
 <template>
 <div>
-    <headerNav title="购物车"/>
+    <headerNav title=""/>
     <p style="line-height: 0.9rem;">test</p>
   <div class="card">
        <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
