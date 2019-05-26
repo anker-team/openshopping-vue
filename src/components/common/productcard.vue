@@ -22,7 +22,7 @@
 
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
-                <van-button plain type="primary" size="small">删除</van-button>
+                <van-button plain type="primary" size="small" :block="blockBool">删除</van-button>
                 <van-stepper v-if="iscard" v-model="product.num" :max="product.kucun"  :min="product.min" @change="onChange(product.id,product.num)"/>
             </template>
         </van-card>
@@ -40,6 +40,11 @@
     import axios from "axios"
 export default {
     name:'product-card',
+    data(){
+        return {
+            blockBool:false
+        }
+    },
     props:{
         product:Object,
         iscard: {
