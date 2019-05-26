@@ -181,16 +181,22 @@ export default {
           this.editText = !this.editText
       },
       deleteBtn(id,index){
-          axios.get("http://api.lizengyi.com/index.php",{
-              params: {
-                  s: "index/Api/delGoodsCat",
-                  catID: id,
-              }
-          }).then(response => {
-              if(response.data.result === 1) {
-                  this.$toast.success = "删除成功!"
-                  this.books.splice(index,1)
-              }
+          this.$dialog.confirm({
+              title: '删除',
+              message: '是否确认删除此商品?'
+          }).then(() => {
+              axios.get("http://api.lizengyi.com/index.php",{
+                  params: {
+                      s: "index/Api/delGoodsCat",
+                      catID: id,
+                  }
+              }).then(response => {
+                  if(response.data.result === 1) {
+                      this.$toast.success("删除成功!")
+                      this.books.splice(index,1)
+                  }
+              });
+          }).catch(() => {
           });
       }
   },
