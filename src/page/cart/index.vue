@@ -122,7 +122,7 @@ export default {
   data() {
     return {
       checkedAll:true,
-      checkedGoods: ['1', '2', '3'],
+      checkedGoods: [],
       goods: [{
         id: '1',
         title: '星巴克(Starbucks)星冰乐 轻盈香草味 咖啡饮料 281ml*6瓶礼盒装低脂减糖',
@@ -169,7 +169,7 @@ export default {
     },
     totalPrice() {
       // return this.goods.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? parseFloat(item.price): 0), 0);
-       return this.books.reduce((total, item) => total+item.price*100*item.num, 0);
+       return  this.books.reduce((total, item) => total+ (this.checkedGoods.indexOf(item.id) !== -1 ? item.price*100*item.num: 0), 0);
     },
   },
   methods: {
