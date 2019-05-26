@@ -1,76 +1,97 @@
 <template>
-  <div class="card">
+<div>
     <headerNav title="购物车"/>
-       <van-cell  value="编辑商品" class="head">
+    <p style="line-height: 0.9rem;">test</p>
+  <div class="card">
+       <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
         <template slot="title">
           <van-checkbox v-model="checkedAll" >全选</van-checkbox>
         </template>
       </van-cell>
         
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
-      
-      <div class="promotion-group">
-        <div  v-for="(item,index) in goods"
-          :key="index" class="card-goods__item"> 
-          <van-checkbox :name="item.id"></van-checkbox>
 
-          <product-card :product='item' :iscard='true' >
-            <template slot>
-              <van-cell value="修改" >
-                  <template slot="title">
-                      <van-tag type="danger">促销</van-tag>
-                      <span class="van-cell-text" >满60元减5元</span>
-                  </template>
-              </van-cell>
-            </template>
-          </product-card>
+        <div class="promotion-group">
+            <div  v-for="(item,index) in books"
+                  :key="index" class="card-goods__item">
+                <van-checkbox :name="item.id"></van-checkbox>
+
+                <product-card :product='item' :iscard='true' >
+                    <template slot>
+                        <van-cell value="删除" v-show="deleteShow" @click="deleteBtn(item.id,index)">
+                            <template slot="title">
+<!--                                <van-tag type="danger">促销</van-tag>-->
+<!--                                <span class="van-cell-text" >满60元减5元</span>-->
+                                <span class="van-cell-text" ></span>
+                            </template>
+                        </van-cell>
+                    </template>
+                </product-card>
+            </div>
         </div>
-        </div>
+      
+<!--      <div class="promotion-group">-->
+<!--        <div  v-for="(item,index) in goods"-->
+<!--          :key="index" class="card-goods__item">-->
+<!--          <van-checkbox :name="item.id"></van-checkbox>-->
+
+<!--          <product-card :product='item' :iscard='true' >-->
+<!--            <template slot>-->
+<!--              <van-cell value="修改" >-->
+<!--                  <template slot="title">-->
+<!--                      <van-tag type="danger">促销</van-tag>-->
+<!--                      <span class="van-cell-text" >满60元减5元</span>-->
+<!--                  </template>-->
+<!--              </van-cell>-->
+<!--            </template>-->
+<!--          </product-card>-->
+<!--        </div>-->
+<!--        </div>-->
     
       <div class="promotion-group">
         
-       <van-cell  is-link class="head">
-        <template slot="title">
-          <van-checkbox v-model="checkedAll" >京东自营</van-checkbox>
-        </template>
-      </van-cell>
+<!--       <van-cell  is-link class="head">-->
+<!--        <template slot="title">-->
+<!--          <van-checkbox v-model="checkedAll" >京东自营</van-checkbox>-->
+<!--        </template>-->
+<!--      </van-cell>-->
       
       
-      <div  v-for="(item,index) in goods"
-        :key="index+10" class="card-goods__item"> 
-        <van-checkbox :name="item.id"></van-checkbox>
-      
-        <product-card :product='item' :iscard='true' >
-          <template slot>
-            <van-cell value="修改" >
-                <template slot="title">
-                    <van-tag type="danger">促销</van-tag>
-                    <span class="van-cell-text" >满60元减5元</span>
-                </template>
-            </van-cell>
-          </template>
-        </product-card>
-      </div>
-      <van-cell value="去凑单" is-link class="promotion">
-        <template slot="title">
-          <p><van-tag type="danger">满减</van-tag>购满60元，可减5元</p>
-        </template>
-      </van-cell>
-      <div  v-for="(item,index) in goods"
-        :key="index+20" class="card-goods__item"> 
-        <van-checkbox :name="item.id"></van-checkbox>
-      
-        <product-card :product='item' :iscard='true' >
-          <template slot>
-            <van-cell value="修改" >
-                <template slot="title">
-                    <van-tag type="danger">促销</van-tag>
-                    <span class="van-cell-text" >满60元减5元</span>
-                </template>
-            </van-cell>
-          </template>
-        </product-card>
-      </div>
+<!--      <div  v-for="(item,index) in goods"-->
+<!--        :key="index+10" class="card-goods__item">-->
+<!--        <van-checkbox :name="item.id"></van-checkbox>-->
+
+<!--        <product-card :product='item' :iscard='true' >-->
+<!--          <template slot>-->
+<!--            <van-cell value="修改" >-->
+<!--                <template slot="title">-->
+<!--                    <van-tag type="danger">促销</van-tag>-->
+<!--                    <span class="van-cell-text" >满60元减5元</span>-->
+<!--                </template>-->
+<!--            </van-cell>-->
+<!--          </template>-->
+<!--        </product-card>-->
+<!--      </div>-->
+<!--      <van-cell value="去凑单" is-link class="promotion">-->
+<!--        <template slot="title">-->
+<!--          <p><van-tag type="danger">满减</van-tag>购满60元，可减5元</p>-->
+<!--        </template>-->
+<!--      </van-cell>-->
+<!--      <div  v-for="(item,index) in goods"-->
+<!--        :key="index+20" class="card-goods__item"> -->
+<!--        <van-checkbox :name="item.id"></van-checkbox>-->
+<!--      -->
+<!--        <product-card :product='item' :iscard='true' >-->
+<!--          <template slot>-->
+<!--            <van-cell value="修改" >-->
+<!--                <template slot="title">-->
+<!--                    <van-tag type="danger">促销</van-tag>-->
+<!--                    <span class="van-cell-text" >满60元减5元</span>-->
+<!--                </template>-->
+<!--            </van-cell>-->
+<!--          </template>-->
+<!--        </product-card>-->
+<!--      </div>-->
         </div>
     </van-checkbox-group>
     
@@ -86,12 +107,17 @@
     </template>
     </van-submit-bar>
   </div>
+</div>
 </template>
 
 <script>
 
+import Navigate from "../../components/footer/navigate";
+import Cookies from "js-cookie"
+import axios from "axios"
 export default {
   components: {
+      Navigate
   },
   data() {
     return {
@@ -129,13 +155,17 @@ export default {
         price: '2680.00',
         quantity: 1,
         imageURL: 'http://source.lizengyi.com/imgs/320454216bbe9e25c7651e1fa51b31fd.jpeg'
-      }]
+      }],
+        books: [],
+        deleteShow: false,
+        editText: true,
     };
   },
   computed: {
     submitBarText() {
       const count = this.checkedGoods.length;
-      return '结算' + (count ? `(${count})` : '');
+      return '去下单' + (count ? `(${count})` : '');
+      // return '结算' + (count ? `(${count})` : '');
     },
     totalPrice() {
       return this.goods.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? parseFloat(item.price): 0), 0);
@@ -145,8 +175,35 @@ export default {
     onSubmit() {
       
       this.$router.push('/order')
+    },
+      editBooks(){
+          this.deleteShow = !this.deleteShow
+          this.editText = !this.editText
+      },
+      deleteBtn(id,index){
+          axios.get("http://api.lizengyi.com/index.php",{
+              params: {
+                  s: "index/Api/delGoodsCat",
+                  catID: id,
+              }
+          }).then(response => {
+              if(response.data.result === 1) {
+                  this.$toast.success = "删除成功!"
+                  this.books.splice(index,1)
+              }
+          });
+      }
+  },
+    created:function(){
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/getGoodsCat",
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+            }
+        }).then(response => {
+            this.books = response.data
+        });
     }
-  }
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
     <van-nav-bar
+    :fixed = true
     :title="title"
     left-text=""
     left-arrow

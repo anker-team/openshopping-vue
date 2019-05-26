@@ -7,19 +7,22 @@
         style="background:#fff"
         >
             <template slot="thumb">
-                <img :src="product.imageURL" />
+                <img :src="product.imgURL" />
                 <p v-if="product.imageTag!=null&&product.imageTag!=''" class="image_tag">{{product.imageTag}}</p>
             </template>
             <template slot="tags">
-                <div class="author" v-if="product.author!=null&&product.price!=''" >
+                <div class="author" v-if="product.author!=null&&product.author!=''" >
                     <span>{{product.author}}</span>
                 </div>
                 <p class="price" v-if="product.price!=null&&product.price!=''" >
                     ￥<span>{{product.price}}</span>
-                    <em class="price_y">￥{{product.price_y}}</em>
+                    <span v-if="product.price_y!=null&&product.price_y!=''">
+                        <em class="price_y">￥{{product.price_y}}</em>
+                    </span>
+
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
-                <van-stepper v-if="iscard" v-model="product.quantity" :max="product.max"  :min="product.min" />
+                <van-stepper v-if="iscard" v-model="product.num" :max="product.kucun"  :min="product.min" @change="onChange(product.id,product.num)"/>
             </template>
         </van-card>
         <van-cell  v-for="(gift,j) in product.gift" :key="j"  :value="'x'+gift.quantity" >
@@ -33,6 +36,7 @@
 </template>
 
 <script>
+    import axios from "axios"
 export default {
     name:'product-card',
     props:{
@@ -41,6 +45,19 @@ export default {
             type: Boolean,
             default: false
         },
+    },
+    methods: {
+        onChange:function(id, value){
+            axios.get("http://api.lizengyi.com/index.php",{
+                params: {
+                    s: "index/Api/changeGoodsCat",
+                    catID: id,
+                    newValue: value
+                }
+            }).then(response => {
+
+            });
+        }
     }
 }
 </script>

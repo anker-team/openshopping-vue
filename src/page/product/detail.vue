@@ -177,6 +177,7 @@
           @buy-clicked="onBuyClicked"
           @add-cart="onAddCartClicked"
         />
+<!--      <navigate/>-->
   </div>
 </template>
 
@@ -184,9 +185,11 @@
 // import skuData from '../../data/sku';
 import axios from "axios"
 import Cookies from "js-cookie";
+import Navigate from "../../components/footer/navigate";
 
 export default {
   components: {
+      Navigate
   },
   data() {
     // this.skuData = skuData;
@@ -297,7 +300,7 @@ export default {
                 goodsID: data.goodsId,
                 num: data.selectedNum,
                 price: data.selectedSkuComb.price/100,
-                img: this.detail.imageURL,
+                imgURL: this.detail.imageURL,
                 title: this.detail.title,
                 kucun: data.selectedSkuComb.stock_num
             }
