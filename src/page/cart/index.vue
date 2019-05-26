@@ -5,7 +5,7 @@
   <div class="card">
        <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
         <template slot="title">
-          <van-checkbox v-model="checkedAll" >全选</van-checkbox>
+          <van-checkbox v-model="checkedAll" v-show="false">全选</van-checkbox>
         </template>
       </van-cell>
         
