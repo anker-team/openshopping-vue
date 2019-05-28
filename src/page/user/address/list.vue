@@ -58,13 +58,10 @@ export default {
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/selectAddress",
-                userID: Cookies.get('userid') ? Cookies.get('userid') : 4,
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
             }
         }).then(response => {
-            this.orders = response.data.catsData
-            if (response.data.addressData.length === 0) {
-                this.type = "add"
-            }
+            console.log(response.data)
         });
     }
 

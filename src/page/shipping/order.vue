@@ -7,7 +7,7 @@
       :border="false"
       class="contact-card"
       is-link
-      to="/user/address?id=2"
+      :to="addressUrl"
     >
       <template v-if="type === 'add'">
         <strong>选择地址</strong>
@@ -141,6 +141,10 @@ computed:{
   finalPrice1() {
     return this.finalPrice*100
   },
+  addressUrl() {
+    let userid = Cookies.get('userid') ? Cookies.get('userid') : 6;
+    return "/user/address?id="+userid;
+  }
 }
 };
 </script>
