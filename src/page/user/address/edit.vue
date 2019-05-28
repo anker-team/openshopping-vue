@@ -1,10 +1,11 @@
 <template>
     <div>
-     <headerNav title="修改地址"/>
+     <headerNav title="添加地址"/>
       <van-address-edit
       :area-list="areaList"
-      :showDelete="showDelete"
+      :show-delete="showDelete"
       show-set-default
+      show-search-result
       @save="onSave"
       @delete="onDelete"
       :addressInfo="info"
@@ -24,8 +25,12 @@ export default {
     data() {
     return {
       areaList,
-      showDelete:false,
-      info:{},
+      showDelete:true,
+      info:{
+          name:'',
+          
+      },
+        showSet:true
     }
   },
 

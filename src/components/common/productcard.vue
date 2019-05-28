@@ -3,11 +3,11 @@
         <van-card
         :title="product.title"
         :desc="product.desc"
-        :num="(iscard?null:product.quantity)"
+        :num="(iscard?null:product.num)"
         style="background:#fff"
         >
             <template slot="thumb">
-                <img :src="product.imgURL" />
+                <img :src="product.imgURL"/>
                 <p v-if="product.imageTag!=null&&product.imageTag!=''" class="image_tag">{{product.imageTag}}</p>
             </template>
             <template slot="tags">
@@ -21,8 +21,9 @@
                     </span>
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
-                <div style="position: relative; bottom: -0.5em;">
-                    <van-button plain type="primary" size="mini">删除</van-button><span></span>
+                <div>
+<!--                    <van-button plain type="primary" size="mini">删除</van-button><span></span>-->
+                    <i class="fa fa-bitbucket" style="color: gray"></i>
                 </div>
                 <van-stepper v-if="iscard" v-model="product.num" :max="product.kucun"  :min="product.min" @change="onChange(product.id,product.num)"/>
             </template>

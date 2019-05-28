@@ -179,7 +179,7 @@ const routes = [
     }
   },
   {
-    path: '/order',
+    path: '/order/:catsID',
     component: () => import('../page/shipping/order'),
     meta: {
       title: '确认订单'

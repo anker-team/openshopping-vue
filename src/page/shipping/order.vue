@@ -1,6 +1,7 @@
 <template>
   <div class="order">
      <headerNav title="确认订单"/>
+    <p style="line-height: 0.8rem;">test</p>
      <van-cell
       center
       :border="false"
@@ -17,35 +18,35 @@
       </template>
     </van-cell>
     <div style="height:15px;"></div>
-    <div class="card" v-for="(product,i) in products" :key="i">
+    <div class="card" v-for="(product,i) in orders" :key="i">
       <product-card :product='product' />
     </div>
     <div style="height:15px;"></div>
     <van-cell-group>
       <van-field
-        label="留言"
+        label="备注"
         type="textarea"
-        placeholder="请输入留言"
+        placeholder="请输入备注"
         rows="1"
         autosize
       />
     </van-cell-group>
     <div style="height:15px;"></div>
-    <van-cell-group class="total">
-        <van-cell title="优惠券" is-link value="抵扣¥5.00" />
-    </van-cell-group>
+<!--    <van-cell-group class="total">-->
+<!--        <van-cell title="优惠券" is-link value="抵扣¥5.00" />-->
+<!--    </van-cell-group>-->
     
     <div style="height:15px;"></div>
     <van-cell-group class="total">
-        <van-cell title="商品总额" value="9.99" />
-        <van-cell title="运费" value="+ 0.00" />
-        <van-cell title="折扣" value="- 5.00" />
-        <van-cell title="实付金额" value="4.99" style="font-weight: 700;" />
+        <van-cell title="商品总额" :value="totalPrice" />
+        <van-cell title="运费" :value="'+ '+ freight.toFixed(2)" />
+        <van-cell title="折扣" :value="'- '+ discount.toFixed(2)" />
+        <van-cell title="实付金额" :value="finalPrice" style="font-weight: 700;" />
     </van-cell-group>
 
     <div style="height:50px;"></div>
     <van-submit-bar
-      :price="3050"
+      :price="finalPrice1"
       button-text="提交订单"
       label='实付金额：'
       @submit="onSubmit"
@@ -55,6 +56,9 @@
 </template>
 
 <script>
+import axios from "axios"
+import Cookies from "js-cookie";
+
 export default {
   data() {
     return {
@@ -94,7 +98,10 @@ export default {
           price: "59.80",
           quantity: 2
         },
-      ]
+      ],
+      orders: [],
+      freight : 3.78,
+      discount: 1.39,
     };
   },
   methods: {
@@ -109,6 +116,32 @@ export default {
         console.log(1);
     }.bind(this));
 },
+created() {
+  axios.get("http://api.lizengyi.com/index.php",{
+    params: {
+      s: "index/Api/sureOrder",
+      userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+      catsID: this.$route.params.catsID,
+    }
+  }).then(response => {
+    this.orders = response.data.catsData
+    if (response.data.addressData.length === 0) {
+      this.type = "add"
+    }
+  });
+},
+computed:{
+  totalPrice() {
+    let total =  (this.orders.reduce((total, item) => total+ item.price*100*item.num, 0))/100;
+    return total.toFixed(2);
+  },
+  finalPrice() {
+    return (parseFloat(this.totalPrice)+this.freight-this.discount).toFixed(2);
+  },
+  finalPrice1() {
+    return this.finalPrice*100
+  },
+}
 };
 </script>
 

@@ -2,6 +2,7 @@
 <div>
 
     <headerNav title="我的地址"/>
+    <p style="line-height: 0.8rem;">test</p>
     <van-address-list
   v-model="chosenAddressId"
   :class="isSelect?'':'hideselect'"
@@ -17,6 +18,9 @@
 
 import { GetAddressList } from "../../../api/user.js";
 import { AddressList } from 'vant';
+import axios from "axios"
+import Cookies from "js-cookie";
+
 export default {
     components:{
         [AddressList.name]:AddressList,
@@ -50,7 +54,18 @@ export default {
         this.isSelect=this.$route.query.id>0;
         GetAddressList().then(response=>{
             this.list=response;
-        })
+        });
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/selectAddress",
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 4,
+            }
+        }).then(response => {
+            this.orders = response.data.catsData
+            if (response.data.addressData.length === 0) {
+                this.type = "add"
+            }
+        });
     }
 
 }

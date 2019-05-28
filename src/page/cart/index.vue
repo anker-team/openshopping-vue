@@ -169,13 +169,12 @@ export default {
     },
     totalPrice() {
       // return this.goods.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? parseFloat(item.price): 0), 0);
-       return  this.books.reduce((total, item) => total+ (this.checkedGoods.indexOf(item.id) !== -1 ? item.price*100*item.num: 0), 0);
+       return this.books.reduce((total, item) => total+ (this.checkedGoods.indexOf(item.id) !== -1 ? item.price*100*item.num: 0), 0);
     },
   },
   methods: {
     onSubmit() {
-
-      this.$router.push('/order')
+      this.$router.push('/order/'+this.checkedGoods.join(','))
     },
       editBooks(){
           this.deleteShow = !this.deleteShow
