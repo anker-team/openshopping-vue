@@ -16,7 +16,7 @@
 
 <script>
 
-import { GetAddressList } from "../../../api/user.js";
+// import { GetAddressList } from "../../../api/user.js";
 import { AddressList } from 'vant';
 import axios from "axios"
 import Cookies from "js-cookie";
@@ -46,22 +46,38 @@ export default {
                 return;
             }
             this.$emit('selectAddress',item);
+            // Cookies.set('address_id', item.id)
+            // Cookies.set('address_name', item.name)
+            // Cookies.set('address_tel', item.tel)
+            // Cookies.set('address_addr', item.address)
             this.$router.go(-1);
-        }
+        },
     },
     created:function(){
         this.chosenAddressId=this.$route.query.id;
         this.isSelect=this.$route.query.id>0;
-        GetAddressList().then(response=>{
-            this.list=response;
-        });
+        //获取地址(origin)
+        // GetAddressList().then(response=>{
+        //     this.list=response;
+        // });
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/selectAddress",
                 userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
             }
         }).then(response => {
-            console.log(response.data)
+            // console.log(response.data)
+            this.list = response.data
+            for(let item of this.list) {
+                if (item.isDefault === 1) this.chosenAddressId = item.id
+                if (item.province == item.city) {
+                    item.address = item.city+
+                        item.county+item.addressDetail
+                } else {
+                    item.address = item.province+item.city+
+                        item.county+item.addressDetail
+                }
+            }
         });
     }
 

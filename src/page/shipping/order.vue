@@ -13,8 +13,8 @@
         <strong>选择地址</strong>
       </template>
       <template v-else>
-        <strong>张三 138****6520</strong>
-        <div>广东省深圳市南山区科技园 </div>
+        <strong>{{name}} {{tel}}</strong>
+        <div>{{address}} </div>
       </template>
     </van-cell>
     <div style="height:15px;"></div>
@@ -102,6 +102,9 @@ export default {
       orders: [],
       freight : 3.78,
       discount: 1.39,
+      name: 'li',
+      tel: '',
+      address: '',
     };
   },
   methods: {
@@ -113,7 +116,7 @@ export default {
     //根据key名获取传递回来的参数，data就是map
     this.$on('selectAddress', function(data){
         //赋值给首页的附近医院数据模型
-        console.log(1);
+        console.log(data);
     }.bind(this));
 },
 created() {
@@ -125,8 +128,23 @@ created() {
     }
   }).then(response => {
     this.orders = response.data.catsData
-    if (response.data.addressData.length === 0) {
-      this.type = "add"
+    if (typeof(Cookies.get('address_id')) !== "undefined") { //直接从cookie读地址
+      this.name = Cookies.get('address_name')
+      let tel = Cookies.get('address_tel')
+      this.tel = tel.slice(0,3)+"****"+tel.slice(6,10)
+      this.address = Cookies.get("address_addr")
+    } else {
+      let addressInfo = response.data.addressData
+      this.name = addressInfo.name
+      this.tel = addressInfo.tel.slice(0,3)+"****"+addressInfo.tel.slice(6,10)
+      if (addressInfo.province == addressInfo.city) {
+        this.address = addressInfo.city+addressInfo.county+addressInfo.addressDetail
+      } else {
+        this.address = addressInfo.province+addressInfo.city+addressInfo.county+addressInfo.addressDetail
+      }
+      if (response.data.addressData.length === 0) {
+        this.type = "add"
+      }
     }
   });
 },
