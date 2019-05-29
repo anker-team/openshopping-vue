@@ -7,7 +7,7 @@
       :border="false"
       class="contact-card"
       is-link
-      :to="addressUrl"
+      @click="addressUrl"
     >
       <template v-if="type === 'add'">
         <strong>选择地址</strong>
