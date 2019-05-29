@@ -114,12 +114,12 @@ export default {
         goods_id: 946755
       }
     ],
-    price: '1.00',
+    price: '2.00',
     market_price:'10.00',
     stock_num: 227,
     collection_id: 2261,
     collection_price: 0,
-    none_sku: false,
+    none_sku: true,
     sold_num: 0,
     min_price: '1.00',
     max_price: '1.00',
@@ -132,7 +132,7 @@ export default {
   quota: 15,
   is_virtual: '0',
   quota_used: 0,
-  goods_info: {
+  goods_info1: {
     title: '测试商品',
     picture:
       'http://source.lizengyi.com/imgs/Fs_OMbSFPa183sBwvG_94llUYiLa.jpeg?imageView2/2/w/100/h/100/q/75/format/jpg',
