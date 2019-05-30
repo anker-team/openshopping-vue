@@ -102,7 +102,7 @@ export default {
       orders: [],
       freight : 3.78,
       discount: 1.39,
-      name: 'li',
+      name: '',
       tel: '',
       address: '',
       addressid: 0
