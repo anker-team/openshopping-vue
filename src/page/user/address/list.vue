@@ -27,10 +27,12 @@ export default {
     },
     data() {
         return {
-        chosenAddressId: '1',
+        chosenAddressId: 1,
         isSelect:false,
         list: [],
         isIn: false,
+        isChoose: false,
+        ChooseId:1,
         }
     },
 
@@ -50,17 +52,18 @@ export default {
                 return;
             }
             this.isIn = true
-            this.$emit('selectAddress',item);
-            // Cookies.set('address_id', item.id)
-            // Cookies.set('address_name', item.name)
-            // Cookies.set('address_tel', item.tel)
-            // Cookies.set('address_addr', item.address)
+            // this.$emit('selectAddress',item);
+            Cookies.set('address_id', item.id)
+            Cookies.set('address_name', item.name)
+            Cookies.set('address_tel', item.tel)
+            Cookies.set('address_addr', item.address)
             this.$router.go(-1);
         },
     },
     created:function(){
         // this.chosenAddressId=this.$route.query.id;
-        this.isSelect=this.$route.query.id>0;   //允许看到
+        // this.isSelect=this.$route.query.id>0;   //允许看到
+        this.isSelect=true;   //允许看到
         //获取地址(origin)
         // GetAddressList().then(response=>{
         //     this.list=response;
@@ -71,15 +74,14 @@ export default {
                 userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
             }
         }).then(response => {
-            // console.log(response.data)
             this.list = response.data
+            if(this.$route.query.id > 0) {
+                this.ChooseId=this.$route.query.id;
+                this.isChoose = true
+            }
             for(let item of this.list) {
-                if (this.$route.query.id > 0) {
-                    this.chosenAddressId=this.$route.query.id;
-                } else {
-                    if (item.isDefault === 1) {
-                        this.chosenAddressId = item.id
-                    }
+                if (item.isDefault === 1 && !this.isChoose) {
+                    this.ChooseId = item.id
                 }
                 if (item.province == item.city) {
                     item.address = item.city+
@@ -89,6 +91,7 @@ export default {
                         item.county+item.addressDetail
                 }
             }
+            this.chosenAddressId=eval(this.ChooseId);
         });
     }
 

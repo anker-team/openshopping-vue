@@ -113,13 +113,13 @@ export default {
       this.$toast("点击按钮");
     },
   },
-  activated(){
-    //根据key名获取传递回来的参数，data就是map
-    this.$on('selectAddress', function(data){
-        //赋值给首页的附近医院数据模型
-        console.log(data);
-    }.bind(this));
-},
+//   activated(){
+//     //根据key名获取传递回来的参数，data就是map
+//     this.$on('selectAddress', function(data){
+//         //赋值给首页的附近医院数据模型
+//         console.log(data);
+//     }.bind(this));
+// },
 created() {
   axios.get("http://api.lizengyi.com/index.php",{
     params: {
@@ -134,6 +134,7 @@ created() {
       let tel = Cookies.get('address_tel')
       this.tel = tel.slice(0,3)+"****"+tel.slice(6,10)
       this.address = Cookies.get("address_addr")
+      this.addressid = Cookies.get("address_id")
     } else {
       if (response.data.addressData.length === 0) { //没有地址
         this.type = "add"
