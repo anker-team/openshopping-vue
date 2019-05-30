@@ -7,11 +7,12 @@
       :border="false"
       class="contact-card"
       is-link
+      :to="addressUrl"
     >
-      <template v-if="type === 'add'" @click="addressUrl">
+      <template v-if="type === 'add'">
         <strong>选择地址</strong>
       </template>
-      <template v-else @click="addressUrl">
+      <template v-else>
         <strong>{{name}} {{tel}}</strong>
         <div>{{address}} </div>
       </template>
@@ -104,6 +105,7 @@ export default {
       name: 'li',
       tel: '',
       address: '',
+      addressid: 0
     };
   },
   methods: {
@@ -133,16 +135,18 @@ created() {
       this.tel = tel.slice(0,3)+"****"+tel.slice(6,10)
       this.address = Cookies.get("address_addr")
     } else {
-      let addressInfo = response.data.addressData
-      this.name = addressInfo.name
-      this.tel = addressInfo.tel.slice(0,3)+"****"+addressInfo.tel.slice(6,10)
-      if (addressInfo.province == addressInfo.city) {
-        this.address = addressInfo.city+addressInfo.county+addressInfo.addressDetail
-      } else {
-        this.address = addressInfo.province+addressInfo.city+addressInfo.county+addressInfo.addressDetail
-      }
-      if (response.data.addressData.length === 0) {
+      if (response.data.addressData.length === 0) { //没有地址
         this.type = "add"
+      } else {
+        let addressInfo = response.data.addressData
+        this.name = addressInfo.name
+        this.addressid = addressInfo.id
+        this.tel = addressInfo.tel.slice(0,3)+"****"+addressInfo.tel.slice(6,10)
+        if (addressInfo.province == addressInfo.city) {
+          this.address = addressInfo.city+addressInfo.county+addressInfo.addressDetail
+        } else {
+          this.address = addressInfo.province+addressInfo.city+addressInfo.county+addressInfo.addressDetail
+        }
       }
     }
   });
@@ -159,8 +163,9 @@ computed:{
     return this.finalPrice*100
   },
   addressUrl() {
-    let userid = Cookies.get('userid') ? Cookies.get('userid') : 6;
-    return "/user/address?id="+userid;
+    // let userid = Cookies.get('userid') ? Cookies.get('userid') : 6;
+
+    return "/user/address?id="+this.addressid;
   }
 }
 };
