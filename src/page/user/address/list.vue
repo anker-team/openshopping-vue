@@ -45,7 +45,7 @@ export default {
             if(!this.isSelect){
                 return;
             }
-            this.$emit('selectAddress',item);
+            // this.$emit('selectAddress',item);
             // Cookies.set('address_id', item.id)
             // Cookies.set('address_name', item.name)
             // Cookies.set('address_tel', item.tel)
