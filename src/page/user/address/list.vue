@@ -30,6 +30,7 @@ export default {
         chosenAddressId: '1',
         isSelect:false,
         list: [],
+        isIn: false,
         }
     },
 
@@ -45,12 +46,15 @@ export default {
             if(!this.isSelect){
                 return;
             }
-            // this.$emit('selectAddress',item);
+            if (this.isIn === true) { //不允许重复进入
+                return;
+            }
+            this.isIn = true
+            this.$emit('selectAddress',item);
             // Cookies.set('address_id', item.id)
             // Cookies.set('address_name', item.name)
             // Cookies.set('address_tel', item.tel)
             // Cookies.set('address_addr', item.address)
-            alert('aa')
             this.$router.go(-1);
         },
     },
