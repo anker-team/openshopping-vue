@@ -7,12 +7,11 @@
       :border="false"
       class="contact-card"
       is-link
-      :to="addressUrl"
     >
-      <template v-if="type === 'add'">
+      <template v-if="type === 'add'" @click="addressUrl">
         <strong>选择地址</strong>
       </template>
-      <template v-else>
+      <template v-else @click="addressUrl">
         <strong>{{name}} {{tel}}</strong>
         <div>{{address}} </div>
       </template>
