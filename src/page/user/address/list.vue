@@ -50,12 +50,13 @@ export default {
             // Cookies.set('address_name', item.name)
             // Cookies.set('address_tel', item.tel)
             // Cookies.set('address_addr', item.address)
+            alert('aa')
             this.$router.go(-1);
         },
     },
     created:function(){
         // this.chosenAddressId=this.$route.query.id;
-        this.isSelect=this.$route.query.id>0;
+        this.isSelect=this.$route.query.id>0;   //允许看到
         //获取地址(origin)
         // GetAddressList().then(response=>{
         //     this.list=response;
@@ -69,7 +70,13 @@ export default {
             // console.log(response.data)
             this.list = response.data
             for(let item of this.list) {
-                if (item.isDefault === 1) this.chosenAddressId = item.id
+                if (this.$route.query.id > 0) {
+                    this.chosenAddressId=this.$route.query.id;
+                } else {
+                    if (item.isDefault === 1) {
+                        this.chosenAddressId = item.id
+                    }
+                }
                 if (item.province == item.city) {
                     item.address = item.city+
                         item.county+item.addressDetail
