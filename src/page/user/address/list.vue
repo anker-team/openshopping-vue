@@ -54,7 +54,7 @@ export default {
         },
     },
     created:function(){
-        this.chosenAddressId=this.$route.query.id;
+        // this.chosenAddressId=this.$route.query.id;
         this.isSelect=this.$route.query.id>0;
         //获取地址(origin)
         // GetAddressList().then(response=>{
