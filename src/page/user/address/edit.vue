@@ -73,7 +73,7 @@ export default {
         axios.get("http://api.lizengyi.com/index.php",{
             params: {
                 s: "index/Api/delAddress",
-                id: this.$route.query.id
+                id: data.id
             }
         }).then(response => {
             Cookies.remove('address_id')
@@ -101,6 +101,7 @@ export default {
             }
         }).then(response => {
             this.info = response.data
+            this.info.isDefault = Boolean(response.data.isDefault)
         });
     }
   }
