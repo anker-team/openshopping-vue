@@ -10,7 +10,7 @@
       :to="addressUrl"
     >
       <template v-if="type === 'add'">
-        <strong>选择地址</strong>
+        <strong>选择/添加收货地址</strong>
       </template>
       <template v-else>
         <strong>{{name}} {{tel}}</strong>
@@ -112,19 +112,23 @@ export default {
   },
   methods: {
     onSubmit() {
-      axios.get("http://api.lizengyi.com/index.php",{
-        params: {
-          s: "index/Api/submitOrder",
-          userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
-          addressID: this.addressid,
-          catsID: this.$route.params.catsID,
-          beizhu: this.beiValue,
-          yunfei: this.freight,
-          z_price: this.finalPrice,
-        }
-      }).then(response => {
-        this.$toast("提交成功");
-      });
+      if (this.name !== '') {
+          axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+              s: "index/Api/submitOrder",
+              userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+              addressID: this.addressid,
+              catsID: this.$route.params.catsID,
+              beizhu: this.beiValue,
+              yunfei: this.freight,
+              z_price: this.finalPrice,
+            }
+          }).then(response => {
+            this.$toast("提交成功");
+          });
+      } else {
+        this.$toast("请先选择/添加收货地址!")
+      }
     },
   },
 //   activated(){

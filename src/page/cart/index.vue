@@ -96,9 +96,9 @@
     </van-checkbox-group>
     
     <div style="height:50px;"></div>
+<!--      :disabled="!checkedGoods.length"-->
     <van-submit-bar
       :price="totalPrice"
-      :disabled="!checkedGoods.length"
       :button-text="submitBarText"
       @submit="onSubmit"
     >
@@ -179,7 +179,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$router.push('/order/'+this.checkedGoods.join(','))
+        if (this.checkedGoods.length === 0) {
+            this.$toast("请选择需要购买的图书!")
+        } else {
+            this.$router.push('/order/'+this.checkedGoods.join(','))
+        }
     },
       editBooks(){
           this.deleteShow = !this.deleteShow
