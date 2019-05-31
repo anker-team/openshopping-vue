@@ -173,7 +173,6 @@
           disable-stepper-input
           :close-on-click-overlay="closeOnClickOverlay"
           :message-config="messageConfig"
-          :custom-sku-validator="customSkuValidator"
           @buy-clicked="onBuyClicked"
           @add-cart="onAddCartClicked"
         />
@@ -267,7 +266,11 @@ export default {
                 userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
                 from: this.detail.from,
                 goodsID: this.$route.params.id,
-                fangshi: this.collection === "yes" ? "no" : "yes"
+                fangshi: this.collection === "yes" ? "no" : "yes",
+                price: this.detail.price,
+                imgURL: this.detail.imageURL,
+                title: this.detail.title,
+                kucun: this.detail.kucun,
             }
         }).then(response => {
             this.collection = this.collection === "yes" ? "no" : "yes"

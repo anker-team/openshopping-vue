@@ -1,16 +1,19 @@
 <template>
 <div>
     <headerNav title="我的收藏"/>
+    <p style="line-height: 0.8rem;">test</p>
     <van-list
         v-model="loading"
         :finished="finished"
         @load="onLoad"
         >
         <div v-for="(item,index) in list" :key="index">
-            <van-swipe-cell :right-width="65" :on-close="onClose(item)">
-                <product-card :product='item' />
-                    <span slot="right" >删除</span>
+            <router-link :to="{ name: 'product', params: {id: item.goodsID}}">
+                <van-swipe-cell :right-width="65" :on-close="onClose(item)">
+                    <product-card :product='item' />
+                        <span slot="right" >删除</span>
                 </van-swipe-cell>
+            </router-link>
         </div>
     </van-list>
 </div>
@@ -18,6 +21,8 @@
 
 <script>
 import { GetFavorite ,DelFavorite} from "../../../api/user.js";
+import axios from "axios"
+import Cookies from "js-cookie"
 
 export default {
     data(){
@@ -54,17 +59,28 @@ export default {
             }
         },
         onLoad() {
-            this.page++;
-            GetFavorite().then(response=>{
-                response.list.forEach(item => {
-                    this.list.push(item);
-                });
-                this.loading = false;
-                if(response.TotalPage<=this.page){
-                    this.finished = true;
+            // this.page++;
+            // GetFavorite().then(response=>{
+            //     response.list.forEach(item => {
+            //         this.list.push(item);
+            //     });
+            //     this.loading = false;
+            //     if(response.TotalPage<=this.page){
+            //         this.finished = true;
+            //     }
+            //
+            // })
+            axios.get("http://api.lizengyi.com/index.php",{
+                params: {
+                    s: "index/Api/getGoodsColl",
+                    userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
                 }
-            
-            })
+            }).then(response => {
+                this.list = response.data
+                // this.list.imageURL = response.data.imgURL
+                this.loading = false
+                this.finished = true
+            });
         }
     },
 }

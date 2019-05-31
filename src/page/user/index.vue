@@ -74,10 +74,11 @@
       </van-row>
     </van-cell-group>
 
-    <van-cell-group>
-      <van-cell title="切换账号" is-link to="/login" />
-    </van-cell-group>
+<!--    <van-cell-group>-->
+<!--      <van-cell title="切换账号" is-link to="/login" />-->
+<!--    </van-cell-group>-->
     <navigate />
+
   </div>
 </template>
 

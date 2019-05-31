@@ -2,7 +2,7 @@
 <div>
     <headerNav title="购物车"/>
     <p style="line-height: 0.9rem;">test</p>
-  <div class="card">
+  <div class="card" v-if="cartNotEmpty">
        <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
         <template slot="title">
           <van-checkbox v-model="checkedAll" v-show="false">全选</van-checkbox>
@@ -102,11 +102,15 @@
       :button-text="submitBarText"
       @submit="onSubmit"
     >
-    <template slot>
-      <van-checkbox v-model="checkedAll" >全选</van-checkbox>
-    </template>
+<!--    <template slot>-->
+<!--      <van-checkbox v-model="checkedAll" >全选</van-checkbox>-->
+<!--    </template>-->
     </van-submit-bar>
   </div>
+    <div style="text-align:center;color:gray;font-size:0.5rem;" v-else>
+        暂无商品
+        <navigate />
+    </div>
 </div>
 </template>
 
@@ -159,6 +163,7 @@ export default {
         books: [],
         deleteShow: false,
         editText: true,
+        cartNotEmpty: false
     };
   },
   computed: {
@@ -208,6 +213,7 @@ export default {
             }
         }).then(response => {
             this.books = response.data
+            if (this.books.length > 0) this.cartNotEmpty = true
         });
     }
 };

@@ -159,6 +159,7 @@ const routes = [
   },
   {
     path: '/product/:id',
+    name: 'product',
     component: () => import('../page/product/detail'),
     meta: {
       title: '商品详情'
