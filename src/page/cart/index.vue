@@ -3,11 +3,11 @@
     <headerNav title="购物车"/>
     <p style="line-height: 0.9rem;">test</p>
   <div class="card">
-<!--       <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">-->
-<!--        <template slot="title">-->
-<!--          <van-checkbox v-model="checkedAll" v-show="false">全选</van-checkbox>-->
-<!--        </template>-->
-<!--      </van-cell>-->
+       <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
+        <template slot="title">
+          <van-checkbox v-model="checkedAll" v-show="false">全选</van-checkbox>
+        </template>
+      </van-cell>
         
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
 

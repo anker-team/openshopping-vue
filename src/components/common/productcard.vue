@@ -21,10 +21,10 @@
                     </span>
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
-                <div>
+<!--                <div>-->
 <!--                    <van-button plain type="primary" size="mini">删除</van-button><span></span>-->
-                    <i class="fa fa-bitbucket" style="color: gray"></i>
-                </div>
+<!--                    <i class="fa fa-bitbucket" style="color: gray"></i>-->
+<!--                </div>-->
                 <van-stepper v-if="iscard" v-model="product.num" :max="product.kucun"  :min="product.min" @change="onChange(product.id,product.num)"/>
             </template>
         </van-card>

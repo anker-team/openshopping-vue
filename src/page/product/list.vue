@@ -1,167 +1,167 @@
 <template>
     <div class="product-list" @scroll="handleScroll()">
         <searchtop/>
-        <div class="filterbar">
-            <ul :class="filtersort?'show':''">
-                <li :class="filterindex==0?'selected':''" v-on:click="onFilterBar(0)"><span>{{filterindex==11?'价格最低':(filterindex==12?'价格最高':'综合')}}</span><van-icon name="arrow" class="down" /></li>
-                <li :class="filterindex==1?'selected':''" v-on:click="onFilterBar(1)"><span>销量</span></li>
-                <li :class="filterindex==2?'selected':''" v-on:click="onFilterBar(2)"><span>上新</span></li>
-                <li :class="filterindex==3?'selected':''" v-on:click="onFilterBar(3)"><span>筛选</span></li>
-            </ul>
-            <div :class="'item_options '+(filtersort?'show':'')">
-                <ul>
-                    <li :class="filterindex==10?'selected':''" v-on:click="onFilterBar(10)">综合</li>
-                    <li :class="filterindex==11?'selected':''"  v-on:click="onFilterBar(11)">价格最低</li>
-                    <li :class="filterindex==12?'selected':''" v-on:click="onFilterBar(12)">价格最高</li>
-                </ul>
-            </div>
-            <van-popup v-model="filtershow" position="right" class="filterlayer" >
-                <div class="filterInner" style="overflow-y: scroll;max-height: 100%;">
-                    <ul>
-                        <li>
-                            <van-cell title="清洁类型" is-link arrow-direction="down" />
-                        </li>
-                        <div style="clear: both;"></div>
-                        <div class="tags_selection">
-                            <div class="option">
-                                <a href="javascript:void 0;">牙龈护理111</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">抛光</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">清洁</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">正畸专用</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">敏感</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">亮白</a>
-                            </div>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </ul>
-                    <ul>
-                        <li>
-                            <van-cell title="清洁类型" is-link arrow-direction="down" />
-                        </li>
-                        <div style="clear: both;"></div>
-                        <div class="tags_selection">
-                            <div class="option">
-                                <a href="javascript:void 0;">牙龈护理111</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">抛光</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">清洁</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">正畸专用</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">敏感</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">亮白</a>
-                            </div>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </ul>
-                    <ul>
-                        <li>
-                            <van-cell title="清洁类型" is-link arrow-direction="down" />
-                        </li>
-                        <div style="clear: both;"></div>
-                        <div class="tags_selection">
-                            <div class="option">
-                                <a href="javascript:void 0;">牙龈护理111</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">抛光</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">清洁</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">正畸专用</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">敏感</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">亮白</a>
-                            </div>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </ul>
-                    <ul>
-                        <li>
-                            <van-cell title="清洁类型" is-link arrow-direction="down" />
-                        </li>
-                        <div style="clear: both;"></div>
-                        <div class="tags_selection">
-                            <div class="option">
-                                <a href="javascript:void 0;">牙龈护理111</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">抛光</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">清洁</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">正畸专用</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">敏感</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">亮白</a>
-                            </div>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </ul>
-                    <ul>
-                        <li>
-                            <van-cell title="清洁类型" is-link arrow-direction="down" />
-                        </li>
-                        <div style="clear: both;"></div>
-                        <div class="tags_selection">
-                            <div class="option">
-                                <a href="javascript:void 0;">牙龈护理111</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">抛光</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">清洁</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">正畸专用</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">敏感</a>
-                            </div>
-                            <div class="option ">
-                                <a href="javascript:void 0;">亮白</a>
-                            </div>
-                            <div style="clear: both;"></div>
-                        </div>
-                    </ul>
-                    <div style="clear: both;"></div>
-                    <van-button size="large"  style="height: 40px;margin-bottom: 15px;line-height: 40px;">清楚选项</van-button>
-                    <div style="height:50px;"></div>
-                </div>
-                <div class="filterlayer_bottom_buttons">
-                    <span class="filterlayer_bottom_button cancel">取消</span>
-                    <span class="filterlayer_bottom_button confirm">确认</span>
-                </div>
-            </van-popup>
-        </div>
+<!--        <div class="filterbar">-->
+<!--            <ul :class="filtersort?'show':''">-->
+<!--                <li :class="filterindex==0?'selected':''" v-on:click="onFilterBar(0)"><span>{{filterindex==11?'价格最低':(filterindex==12?'价格最高':'综合')}}</span><van-icon name="arrow" class="down" /></li>-->
+<!--                <li :class="filterindex==1?'selected':''" v-on:click="onFilterBar(1)"><span>销量</span></li>-->
+<!--                <li :class="filterindex==2?'selected':''" v-on:click="onFilterBar(2)"><span>上新</span></li>-->
+<!--                <li :class="filterindex==3?'selected':''" v-on:click="onFilterBar(3)"><span>筛选</span></li>-->
+<!--            </ul>-->
+<!--            <div :class="'item_options '+(filtersort?'show':'')">-->
+<!--                <ul>-->
+<!--                    <li :class="filterindex==10?'selected':''" v-on:click="onFilterBar(10)">综合</li>-->
+<!--                    <li :class="filterindex==11?'selected':''"  v-on:click="onFilterBar(11)">价格最低</li>-->
+<!--                    <li :class="filterindex==12?'selected':''" v-on:click="onFilterBar(12)">价格最高</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <van-popup v-model="filtershow" position="right" class="filterlayer" >-->
+<!--                <div class="filterInner" style="overflow-y: scroll;max-height: 100%;">-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <van-cell title="清洁类型" is-link arrow-direction="down" />-->
+<!--                        </li>-->
+<!--                        <div style="clear: both;"></div>-->
+<!--                        <div class="tags_selection">-->
+<!--                            <div class="option">-->
+<!--                                <a href="javascript:void 0;">牙龈护理111</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">抛光</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">清洁</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">正畸专用</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">敏感</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">亮白</a>-->
+<!--                            </div>-->
+<!--                            <div style="clear: both;"></div>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <van-cell title="清洁类型" is-link arrow-direction="down" />-->
+<!--                        </li>-->
+<!--                        <div style="clear: both;"></div>-->
+<!--                        <div class="tags_selection">-->
+<!--                            <div class="option">-->
+<!--                                <a href="javascript:void 0;">牙龈护理111</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">抛光</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">清洁</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">正畸专用</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">敏感</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">亮白</a>-->
+<!--                            </div>-->
+<!--                            <div style="clear: both;"></div>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <van-cell title="清洁类型" is-link arrow-direction="down" />-->
+<!--                        </li>-->
+<!--                        <div style="clear: both;"></div>-->
+<!--                        <div class="tags_selection">-->
+<!--                            <div class="option">-->
+<!--                                <a href="javascript:void 0;">牙龈护理111</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">抛光</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">清洁</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">正畸专用</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">敏感</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">亮白</a>-->
+<!--                            </div>-->
+<!--                            <div style="clear: both;"></div>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <van-cell title="清洁类型" is-link arrow-direction="down" />-->
+<!--                        </li>-->
+<!--                        <div style="clear: both;"></div>-->
+<!--                        <div class="tags_selection">-->
+<!--                            <div class="option">-->
+<!--                                <a href="javascript:void 0;">牙龈护理111</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">抛光</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">清洁</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">正畸专用</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">敏感</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">亮白</a>-->
+<!--                            </div>-->
+<!--                            <div style="clear: both;"></div>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <van-cell title="清洁类型" is-link arrow-direction="down" />-->
+<!--                        </li>-->
+<!--                        <div style="clear: both;"></div>-->
+<!--                        <div class="tags_selection">-->
+<!--                            <div class="option">-->
+<!--                                <a href="javascript:void 0;">牙龈护理111</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">抛光</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">清洁</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">正畸专用</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">敏感</a>-->
+<!--                            </div>-->
+<!--                            <div class="option ">-->
+<!--                                <a href="javascript:void 0;">亮白</a>-->
+<!--                            </div>-->
+<!--                            <div style="clear: both;"></div>-->
+<!--                        </div>-->
+<!--                    </ul>-->
+<!--                    <div style="clear: both;"></div>-->
+<!--                    <van-button size="large"  style="height: 40px;margin-bottom: 15px;line-height: 40px;">清楚选项</van-button>-->
+<!--                    <div style="height:50px;"></div>-->
+<!--                </div>-->
+<!--                <div class="filterlayer_bottom_buttons">-->
+<!--                    <span class="filterlayer_bottom_button cancel">取消</span>-->
+<!--                    <span class="filterlayer_bottom_button confirm">确认</span>-->
+<!--                </div>-->
+<!--            </van-popup>-->
+<!--        </div>-->
 
         <div v-for="(product,i) in booklist" :key="i">
           <product-card :product='product' @click.native="showProduct(product.id)" />

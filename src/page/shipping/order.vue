@@ -25,6 +25,7 @@
     <van-cell-group>
       <van-field
         label="备注"
+        v-model="beiValue"
         type="textarea"
         placeholder="请输入备注"
         rows="1"
@@ -100,17 +101,30 @@ export default {
         },
       ],
       orders: [],
-      freight : 3.78,
-      discount: 1.39,
+      freight : 0,
+      discount: 0,
       name: '',
       tel: '',
       address: '',
-      addressid: 0
+      addressid: 0,
+      beiValue: '',  //备注
     };
   },
   methods: {
     onSubmit() {
-      this.$toast("点击按钮");
+      axios.get("http://api.lizengyi.com/index.php",{
+        params: {
+          s: "index/Api/submitOrder",
+          userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+          addressID: this.addressid,
+          catsID: this.$route.params.catsID,
+          beizhu: this.beiValue,
+          yunfei: this.freight,
+          z_price: this.finalPrice,
+        }
+      }).then(response => {
+        this.$toast("提交成功");
+      });
     },
   },
 //   activated(){
