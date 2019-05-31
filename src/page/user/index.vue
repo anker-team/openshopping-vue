@@ -2,32 +2,33 @@
   <div>
     <div class="user-profile">
       <div class="user-profile-avatar">
-        <a href="/#/user/info">
-          <img :src="data.Avatar" alt="用户头像">
-        </a>
+<!--        <a href="/#/user/info">-->
+          <img :src="data.headimgurl" alt="">
+<!--        </a>-->
       </div>
       <div class="user-profile-username">
-        <a href="/#/user/info">
-          <span class="m-nick">{{data.UserName}}</span>
-        </a>  
+<!--        <a href="/#/user/info">-->
+          <span class="m-nick">{{data.nickname}}</span>
+<!--        </a>  -->
       </div>
     </div>
 
     <van-cell-group class="user-group">
-      <van-cell title="我的订单" value="查看全部订单" is-link  to="/user/order"/>
+<!--      <van-cell title="我的订单" value="查看全部订单" is-link  to="/user/order"/>-->
+      <van-cell title="我的订单"/>
       <van-row class="user-links">
         <router-link  to="/user/order/1">
           <van-col span="6">
             <van-icon name="pending-payment">
-              <van-info :info="data.UnPayTotal"  />
+              <van-info :info="data.UnRecieveTotal"  />
             </van-icon>
-            <div>待付款</div>
+            <div>待发货</div>
           </van-col>
         </router-link>
         <router-link  to="/user/order/2">
           <van-col span="6">
             <van-icon name="logistics">
-              <van-info :info="data.UnRecieveTotal"   />
+              <van-info :info="data.OnRoad"   />
             </van-icon>
             <div>待发货</div>
           </van-col>
@@ -39,14 +40,14 @@
             <div>已完成</div>
           </van-col>
         </router-link>
-        <router-link  to="/user/aftersale">
-          <van-col span="6">
-            <van-icon name="after-sale" >
-              <van-info :info="data.AfterSaleTotal"   />
-            </van-icon>
-            <div>售后</div>
-          </van-col>
-        </router-link>
+<!--        <router-link  to="/user/aftersale">-->
+<!--          <van-col span="6">-->
+<!--            <van-icon name="after-sale" >-->
+<!--              <van-info :info="data.AfterSaleTotal"   />-->
+<!--            </van-icon>-->
+<!--            <div>售后</div>-->
+<!--          </van-col>-->
+<!--        </router-link>-->
       </van-row>
     </van-cell-group>
     
@@ -83,7 +84,9 @@
 </template>
 
 <script>
-import { GetUserIndex } from "../../api/user.js";
+// import { GetUserIndex } from "../../api/user.js";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default {
   data(){
@@ -94,9 +97,18 @@ export default {
   components: {
   },
   created:function(){
-      GetUserIndex().then(response=>{
-          this.data=response;
-      });
+      // GetUserIndex().then(response=>{
+      //     this.data=response;
+      // });
+    axios.get("http://api.lizengyi.com/index.php",{
+      params: {
+        s: "index/Api/getUserInfo",
+        userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+      }
+    }).then(response => {
+      console.log(response)
+      this.data = response.data
+    });
   },
 };
 </script>

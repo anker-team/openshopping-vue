@@ -164,7 +164,7 @@
 <!--        </div>-->
 
         <div v-for="(product,i) in booklist" :key="i">
-          <product-card :product='product' @click.native="showProduct(product.id)" />
+          <product-card :product='product' @click.native="showProduct(product.id, product.from)" />
         </div>
         <div style="text-align:center" v-show="isShow">
             <img :src="imgUrl" >
@@ -209,8 +209,8 @@ export default {
         this.filterindex = value;
       }
     },
-    showProduct(id){
-        this.$router.push('/product/'+id);
+    showProduct(id, from){
+        this.$router.push('/product/'+id+'?from='+from);
     },
       scrollBottom() {
           if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight)) && this.scroll === true && this.status === 1){
