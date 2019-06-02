@@ -41,6 +41,8 @@ import product from "../../components/page/product.vue";
 import product1 from "../../components/page/product1.vue";
 import { GetPage } from "../../api/page.js";
 
+import axios from "axios"
+
 export default {
     name:"page",
     components:{
@@ -60,12 +62,65 @@ export default {
         return{
             topheight:0,
             page:{},
+            bannerData: {},
         }
     },
     created:function(){
+        axios.get("http://api.lizengyi.com/index.php",{
+            params: {
+                s: "index/Api/getBannerList",
+            }
+        }).then(response => {
+            let obj = new Object()
+            obj.PageSectionId = 2515;
+            obj.Code = "ImageText";
+            obj.ParameterDictionary = new Object();
+            obj.ParameterDictionary.type = "1";
+            obj.ParameterDictionary.showtype = "1";
+            obj.ParameterDictionary.color = "";
+            obj.ParameterDictionary.backgroundcolor = "";
+            obj.ParameterDictionary.shownumber = response.data.symbol[1].length
+            obj.ParameterDictionary.imagelist = response.data.symbol[1]
+            this.page.Sections.unshift(obj)
+
+            let obj1 = new Object()
+            obj1.PageSectionId = 2514;
+            obj1.Code = "ImageText";
+            obj1.ParameterDictionary = new Object();
+            obj1.ParameterDictionary.type = "1";
+            obj1.ParameterDictionary.showtype = "1";
+            obj1.ParameterDictionary.color = "";
+            obj1.ParameterDictionary.backgroundcolor = "";
+            obj1.ParameterDictionary.shownumber = response.data.symbol[0].length
+            obj1.ParameterDictionary.imagelist = response.data.symbol[0]
+            this.page.Sections.unshift(obj1)
+
+            let obj2 = new Object()
+            obj2.PageSectionId = 2513;
+            obj2.Code = "ImageAd";
+            obj2.ParameterDictionary = new Object();
+            obj2.ParameterDictionary.type = "2";
+            obj2.ParameterDictionary.imagegap = "0"
+            obj2.ParameterDictionary.shownumber = response.data.single.length
+            obj2.ParameterDictionary.imagelist = response.data.single
+            this.page.Sections.unshift(obj2)
+
+            let obj3 = new Object()
+            obj3.PageSectionId = 2512;
+            obj3.Code = "ImageAd";
+            obj3.ParameterDictionary = new Object();
+            obj3.ParameterDictionary.type = "1";
+            obj3.ParameterDictionary.imagegap = "0"
+            obj3.ParameterDictionary.shownumber = response.data.banner.length
+            obj3.ParameterDictionary.imagelist = response.data.banner
+            this.page.Sections.unshift(obj3)
+
+        });
+
         GetPage().then(response=>{
             this.page=response;
         });
+        console.log(this.page)
     },
     methods:{
         settopheight:function(value){
