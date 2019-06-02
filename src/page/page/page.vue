@@ -63,6 +63,7 @@ export default {
             topheight:0,
             page:{},
             bannerData: {},
+            isLoad: false
         }
     },
     created:function(){
@@ -71,6 +72,25 @@ export default {
                 s: "index/Api/getBannerList",
             }
         }).then(response => {
+            this.page.Sections = []
+
+            this.page.Sections[5] = {
+                "PageSectionId": 2522,
+                "Code": "Product1",
+                "ParameterDictionary": {
+                    "type": "2",
+                    "source": "1",
+                    "showsort": "0",
+                    "shownumber": "6",
+                    "tag": "0",
+                    "showtype": "simple",
+                    "buttonvalue": "购买",
+                    "productids": "4,1,3",
+                    "productcategoryid": "",
+                    "producttagid": ""
+                }
+            }
+
             let obj = new Object()
             obj.PageSectionId = 2515;
             obj.Code = "ImageText";
@@ -81,7 +101,7 @@ export default {
             obj.ParameterDictionary.backgroundcolor = "";
             obj.ParameterDictionary.shownumber = response.data.symbol[1].length
             obj.ParameterDictionary.imagelist = response.data.symbol[1]
-            this.page.Sections.unshift(obj)
+            this.page.Sections[4] = obj
 
             let obj1 = new Object()
             obj1.PageSectionId = 2514;
@@ -93,7 +113,7 @@ export default {
             obj1.ParameterDictionary.backgroundcolor = "";
             obj1.ParameterDictionary.shownumber = response.data.symbol[0].length
             obj1.ParameterDictionary.imagelist = response.data.symbol[0]
-            this.page.Sections.unshift(obj1)
+            this.page.Sections[3] = obj1
 
             let obj2 = new Object()
             obj2.PageSectionId = 2513;
@@ -103,7 +123,7 @@ export default {
             obj2.ParameterDictionary.imagegap = "0"
             obj2.ParameterDictionary.shownumber = response.data.single.length
             obj2.ParameterDictionary.imagelist = response.data.single
-            this.page.Sections.unshift(obj2)
+            this.page.Sections[2] = obj2
 
             let obj3 = new Object()
             obj3.PageSectionId = 2512;
@@ -113,14 +133,27 @@ export default {
             obj3.ParameterDictionary.imagegap = "0"
             obj3.ParameterDictionary.shownumber = response.data.banner.length
             obj3.ParameterDictionary.imagelist = response.data.banner
-            this.page.Sections.unshift(obj3)
+            this.page.Sections[1] = obj3
+
+            this.page.Sections[0] = {
+                "PageSectionId": 2511,
+                "Code": "Search",
+                "ParameterDictionary": {
+                    "keyword": "搜索商品",
+                    "position": "fixed",
+                    "backgroundcolor": "#f9f9f9",
+                    "color": "#999999",
+                    "textalign": "center",
+                    "boxcolor": "#ffffff",
+                    "boxtype": "2"
+                }
+            }
 
         });
 
         GetPage().then(response=>{
             this.page=response;
         });
-        console.log(this.page)
     },
     methods:{
         settopheight:function(value){

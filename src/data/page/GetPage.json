@@ -3,36 +3,7 @@
     "Name": "仿考拉",
     "BackgroundColor": "",
     "Sections": [
-        {
-            "PageSectionId": 2511,
-            "Code": "Search",
-            "ParameterDictionary": {
-                "keyword": "搜索商品",
-                "position": "fixed",
-                "backgroundcolor": "#f9f9f9",
-                "color": "#999999",
-                "textalign": "center",
-                "boxcolor": "#ffffff",
-                "boxtype": "2"
-            }
-        },
 
-        {
-            "PageSectionId": 2521,
-            "Code": "ImageAd",
-            "ParameterDictionary": {
-                "type": "6",
-                "imagegap": "0",
-                "shownumber": "4",
-                "imagelist": [
-                    {
-                        "link": "",
-                        "src": "http://source.lizengyi.com/imgs/61556274-32ef-44bf-84af-b3d4485ac157.png",
-                        "title": ""
-                    }
-                ]
-            }
-        },
         {
             "PageSectionId": 2522,
             "Code": "Product",

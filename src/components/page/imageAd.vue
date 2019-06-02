@@ -16,15 +16,6 @@
             </div>
         </li>
     </ul>
-    <ul  v-if="data.type=='6'">
-        <li v-for="(image,index) in data.imagelist" :key="index" class="cap-image-ad__content" :style="'margin:'+data.imagegap+'px 0px;'">
-            <div class="image-wrapper">
-                <a :href="image.url">
-                    <img alt="" class="cap-image-ad__image" v-lazy="image.src+''" />
-                </a>
-            </div>
-        </li>
-    </ul>
 
     <div v-if="data.type=='3'||data.type=='4'||data.type=='5'" class='cap-image-ad__image-nav' style='overflow-x:scroll;' >
         <div v-for="(item,index) in data.imagelist" :key="index" class="image-wrapper" :style="'width:'+(data.type=='3'?'80':(data.type=='4'?'40':'20'))+'%;margin-right:'+data.imagegap+'px;'">
