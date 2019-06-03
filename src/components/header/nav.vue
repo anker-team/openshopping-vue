@@ -5,7 +5,9 @@
     left-text=""
     left-arrow
     @click-left="onBack"
-    />
+    >
+        <van-icon name="wap-home" slot="right" @click="onClickHome"/>
+    </van-nav-bar>
 </template>
 
 <script>
@@ -22,6 +24,9 @@ export default {
         onBack() {
         history.back();
         },
+        onClickHome() {
+            this.$router.push('/home');
+        }
     }
 }
 </script>

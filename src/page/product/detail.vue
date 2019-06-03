@@ -1,5 +1,5 @@
 <template>
-  <div class="goods">
+  <div class="goods" v-show="this.canShow">
      <headerNav title="商品详情"/>
     <van-swipe class="goods-swipe" :autoplay="3000" :show-indicators="false">
       <van-swipe-item v-for="(thumb, index) in imgs" :key="index">
@@ -247,6 +247,7 @@ export default {
         collection : false,   //是否收藏
         collColor: "",
         bookNum: 1,   //选择书籍数量
+        canShow: false,  //是否直接显示模板
     };
   },
   methods: {
@@ -348,6 +349,7 @@ export default {
                     this.collColor = "coll-color"
             }
             this.$toast.clear();
+            this.canShow = true;
         });
     },
     computed:{
