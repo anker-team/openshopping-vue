@@ -3,70 +3,72 @@
      <headerNav title="商品详情"/>
     <van-swipe class="goods-swipe" :autoplay="3000" :show-indicators="false">
       <van-swipe-item v-for="(thumb, index) in imgs" :key="index">
-        <div style="width: 7.5rem; height: 6rem;">
-            <img :src="thumb" style="width: 5rem; height: 6rem;margin:0 auto;">
+<!--        <div style="width: 7.5rem; height: 6rem;">-->
+        <div style="height: 4rem;margin-top: 46px;position: relative;">
+<!--            <img :src="thumb" style="width: 5rem; height: 6rem;margin:0 auto;">-->
+<!--            <img :src="thumb" style="width: 100%; height: 100%;margin:0 auto;background-color: #fff">-->
+            <img :src="thumb" style="width: auto;height:80%;position:absolute;left: 33%;top: 10%;">
+
         </div>
       </van-swipe-item>
     </van-swipe>
 
     <van-cell-group>
       <van-cell>
-        <span class="goods-price">{{ formatPrice(detail.price) }}</span>
-        <span class="goods-market-price">{{ formatPrice(detail.price_y) }}</span>
-        <div class="goods-title">{{ detail.title }}</div>
-        <div class="goods-subtit" v-html="detail.j_summary"></div>
+        <div class="goods-title" style="font-size:18px;line-height: 24px;font-weight: normal;border-top: 0;padding: 10px 0">{{ detail.title }}</div>
+        <span class="goods-price" style="font-size:24px">{{ formatPrice(detail.price) }}</span>
+        <span class="goods-price" style="font-size:12px;border:1px solid #06bf04;border-radius:12%;margin-left:10px;padding: 2px 5px;color:#06bf04;">{{discountNew}}折</span>
+<!--        <span class="goods-market-price">{{ formatPrice(detail.price_y) }}</span>-->
+<!--        <div class="goods-subtit" v-html="detail.j_summary"></div>-->
       </van-cell>
         <van-cell>
-            <div class="goods-title">作者: {{ detail.author }}</div>
-            <div class="goods-title">出版社: {{ detail.publisher }}</div>
-            <div class="goods-title">出版时间: {{ detail.publishtime }}</div>
-            <div class="goods-title">ISBN: {{ detail.isbn }}</div>
+            <div class="goods-title"><span style="color: #ccc;">原价:</span> {{ formatPrice(detail.price_y) }}</div>
+            <div class="goods-title"><span style="color: #ccc;">作者:</span> {{ detail.author }}</div>
+            <div class="goods-title"><span style="color: #ccc;">出版社:</span> {{ detail.publisher }}</div>
+            <div class="goods-title"><span style="color: #ccc;">出版时间:</span> {{ detail.publishtime }}</div>
+            <div class="goods-title"><span style="color: #ccc;">ISBN:</span> {{ detail.isbn }}</div>
         </van-cell>
       
       <van-cell   @click="onClickShowTag" class="goods-tag" >
         <template slot="title" style="font-size:10px;">
-            <img src="http://source.lizengyi.com/imgs/ba8a4c2fdaa54f82a45261293c116af61419663676663i46n3jlh10028.png"/>
-            <span >挪威品牌</span>
-            <img src="http://source.lizengyi.com/imgs/13bd59e6e29a4f06b278c586629e690d.png" />
-            <span >跨境商品</span>
             <van-icon name="passed" color="red" />
-            <span >次日达</span>
+            <span >工坊自营</span>
             <van-icon name="passed" color="red" />
-            <span >自提</span>
+            <span >货到付款</span>
             <van-icon name="passed" color="red" />
-            <span >闪电退款</span>
+            <span >消毒塑封</span>
             <van-icon name="passed" color="red" />
-            <span >前海保税仓</span>
+            <span >保证最低价</span>
             <van-icon name="passed" color="red" />
-            <span >七天无理由退货（拆封后不支持）</span>
+            <span >100%正品</span>
         </template>
       </van-cell>   
     </van-cell-group>
 
-    <van-cell-group class="goods-cell-group">
-      <van-cell is-link  @click="showPromotion" >
-        <template slot="title">
-            <span style="margin-right: 10px;">领券</span>
-            <van-tag type="danger" mark  style="margin-right: 5px;">满180减30</van-tag>
-            <van-tag type="danger" mark  style="margin-right: 5px;">满300减100</van-tag>
-        </template>
-      </van-cell>
-      
-      <van-cell  is-link @click="showPromotion" >
-        <template slot="title">
-            <span style="margin-right: 10px;">促销</span>
-            <van-tag type="danger" style="margin-right: 5px;">多买优惠</van-tag>
-            <van-tag type="danger" style="margin-right: 5px;">满减</van-tag>
-            <van-tag type="danger" style="margin-right: 5px;">限购</van-tag>
-        </template>
-      </van-cell>
-    </van-cell-group>
+<!--    <van-cell-group class="goods-cell-group">-->
+<!--      <van-cell is-link  @click="showPromotion" >-->
+<!--        <template slot="title">-->
+<!--            <span style="margin-right: 10px;">领券</span>-->
+<!--            <van-tag type="danger" mark  style="margin-right: 5px;">满180减30</van-tag>-->
+<!--            <van-tag type="danger" mark  style="margin-right: 5px;">满300减100</van-tag>-->
+<!--        </template>-->
+<!--      </van-cell>-->
+<!--      -->
+<!--      <van-cell  is-link @click="showPromotion" >-->
+<!--        <template slot="title">-->
+<!--            <span style="margin-right: 10px;">促销</span>-->
+<!--            <van-tag type="danger" style="margin-right: 5px;">多买优惠</van-tag>-->
+<!--            <van-tag type="danger" style="margin-right: 5px;">满减</van-tag>-->
+<!--            <van-tag type="danger" style="margin-right: 5px;">限购</van-tag>-->
+<!--        </template>-->
+<!--      </van-cell>-->
+<!--    </van-cell-group>-->
     
     <van-cell-group class="goods-cell-group">
       <van-cell  is-link @click="showSku" >
         <template slot="title">
             <span style="margin-right: 10px;">已选</span>
-            <span >10件装</span>
+            <span >{{bookNum}}本</span>
         </template>
       </van-cell>
       
@@ -74,13 +76,7 @@
     
     <div class="goods-info">
         <p class="goods-info-title" >图书详情</p>
-<!--        <div v-html="goods.info"></div>-->
-        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------图书简介--------</p>
-        <div class="goods-subtit" v-html="detail.j_section"></div>
-        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------图书目录--------</p>
-        <div class="goods-subtit" v-html="detail.j_catalog"></div>
-        <p style="text-align: center;font-weight:lighter;font-size: 0.5rem;">---------编辑推荐语--------</p>
-        <div class="goods-subtit" v-html="detail.j_commend"></div>
+        <div class="goods-subtit" v-html="detail.j_summary"></div>
         <div>
 
         </div>
@@ -127,36 +123,36 @@
             <van-cell>
                 <template slot="title">
                     <van-icon name="passed" color="red" style="margin-right: 10px;" />
-                    <span >次日达</span>
-                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">指定时间前下单，次日送达</div>
+                    <span >工坊自营</span>
+                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">工坊自营，全国调配货源。</div>
                 </template>
             </van-cell>
             <van-cell>
                 <template slot="title">
                     <van-icon name="passed" color="red" style="margin-right: 10px;" />
-                    <span >自提</span>
-                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">我们提供多种自提服务，包括自提点、自助提货柜、移动自提车等服务</div>
+                    <span >货到付款</span>
+                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">货到付款,安心放心!</div>
                 </template>
             </van-cell>
             <van-cell>
                 <template slot="title">
                     <van-icon name="passed" color="red" style="margin-right: 10px;" />
-                    <span >闪电退款</span>
-                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">签收7天内退货的，提供先退款后退货服务。</div>
+                    <span >消毒塑封</span>
+                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">我们会对图书进行专业的消毒和包装。</div>
                 </template>
             </van-cell>
             <van-cell>
                 <template slot="title">
                     <van-icon name="passed" color="red" style="margin-right: 10px;" />
-                    <span >七天无理由退货（拆封后不支持）</span>
-                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">七天无理由退货（拆封后不支持）</div>
+                    <span >保证最低价</span>
+                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">全网最低价,价值与价格兼具!</div>
                 </template>
             </van-cell>
             <van-cell>
                 <template slot="title">
                     <van-icon name="passed" color="red" style="margin-right: 10px;" />
-                    <span >前海保税仓</span>
-                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">本商品由前海保税仓发货</div>
+                    <span >100%正品</span>
+                    <div style="margin-left: 24px;font-size:10px;color:#7d7d7d;">全部书籍均为正品，享受书籍带来的纯真乐趣。</div>
                 </template>
             </van-cell>
     </van-actionsheet>
@@ -168,13 +164,13 @@
           :hide-stock="skuData.sku.hide_stock"
           :quota="skuData.quota"
           :quota-used="skuData.quota_used"
-          reset-stepper-on-hide
           reset-selected-sku-on-hide
           disable-stepper-input
           :close-on-click-overlay="closeOnClickOverlay"
           :message-config="messageConfig"
           @buy-clicked="onBuyClicked"
           @add-cart="onAddCartClicked"
+          @stepper-change="onStepChange"
         />
 <!--      <navigate/>-->
   </div>
@@ -250,11 +246,12 @@ export default {
         imgs: [],
         collection : false,   //是否收藏
         collColor: "",
+        bookNum: 1,   //选择书籍数量
     };
   },
   methods: {
     formatPrice(data) {
-      return '¥' + (data / 100 *100).toFixed(2);
+      return '¥ ' + (data / 100 *100).toFixed(2);
     },
     onClickCart() {
       this.$router.push('/cart');
@@ -314,6 +311,9 @@ export default {
             this.showBase=false;
         });
     },
+      onStepChange(value) {
+            this.bookNum = value
+      }
 
   },
     created() {
@@ -349,6 +349,12 @@ export default {
             }
             this.$toast.clear();
         });
+    },
+    computed:{
+        discountNew: function(){
+            let a = (this.detail.price*100)/(this.detail.price_y*100)*10
+            return a.toFixed(1)
+        }
     }
 };
 </script>
@@ -368,7 +374,7 @@ export default {
   }
   &-tag{
       font-size: 12px;
-        border-top: 1px solid #e5e5e5;
+        /*border-top: 1px solid #e5e5e5;*/
         span{
       margin-right: 10px;
         }
@@ -383,18 +389,22 @@ export default {
       }
   }
   &-title {
-        line-height: 18px;
+        line-height: 12px;
     padding-top: 10px;
     margin-bottom: 6px;
     font-size: 14px;
     color: #333;
-    font-weight: 700;
-    border-top: 1px solid #f0f0f0;
+    /*font-weight: 700;*/
+      font-weight: normal;
+    /*border-top: 1px solid #f0f0f0;*/
   }
   &-subtit{
+      background-repeat: round;
+      background-image: url(http://api.lizengyi.com/static/img/detail_bg.jpg);
       font-size: 13px;
     color: #333;
     line-height: 21px;
+      padding: 10px 14px;
   }
   &-price {
     color: #f44;font-size: 20px;
@@ -412,7 +422,7 @@ export default {
     }
   }
   &-info-title{
-      height: 44px;line-height: 44px;text-align: center;font-size: 14px;font-weight: 700;margin: 10px;border-top: 1px solid #e5e5e5;
+      height: 44px;line-height: 44px;text-align: center;font-size: 14px;font-weight: 700;margin: 10px;
   }
   &-info p{
           margin: 0;
