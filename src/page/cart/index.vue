@@ -106,8 +106,9 @@
 <!--    </template>-->
     </van-submit-bar>
   </div>
-    <div style="text-align:center;color:gray;font-size:0.5rem;" v-else>
-        暂无商品
+    <div style="text-align:center;color:gray;font-size:0.5rem;margin-top:46px;" v-else>
+        <img src="http://api.lizengyi.com/static/img/cat_null.png" />
+        <div>暂无商品</div>
         <navigate />
     </div>
 </div>
@@ -248,8 +249,8 @@ export default {
 }
 .card{
   background: #f7f7f7;
-  .van-submit-bar__bar {
       margin-top:46px;
+  .van-submit-bar__bar {
       border-top: 1px solid #f7f7f7;
       .van-checkbox{
         padding-left: 5px;
