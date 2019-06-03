@@ -2,22 +2,30 @@
     <van-cell-group class="additional">
         <van-card
         :title="product.title"
-        :desc="product.desc"
         :num="(iscard?null:product.num)"
-        style="background:#fff"
+        style="background:#fff;"
         >
             <template slot="thumb">
                 <img :src="product.imgURL"/>
                 <p v-if="product.imageTag!=null&&product.imageTag!=''" class="image_tag">{{product.imageTag}}</p>
             </template>
             <template slot="tags">
-                <div class="author" v-if="product.author!=null&&product.author!=''" >
-                    <span>{{product.author}}</span>
+                <div class="author">
+                    <span>
+                        作者: <span v-if="product.author!=null&&product.author!=''">{{product.author}}</span>
+                             <span v-else>未知</span>
+                    </span>
+                </div>
+                <div class="author" >
+                    <span>
+                        出版社: <span v-if="product.publisher!=null&&product.publisher!=''">{{product.publisher}}</span>
+                               <span v-else>未知</span>
+                    </span>
                 </div>
                 <p class="price" v-if="product.price!=null&&product.price!=''" >
                     ￥<span>{{product.price}}</span>
-                    <span v-if="product.price_y!=null&&product.price_y!=''">
-                        <em class="price_y">￥{{product.price_y}}</em>
+                    <span class="account">
+                        {{account}}折
                     </span>
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
                 </p>
@@ -61,6 +69,12 @@ export default {
 
             });
         }
+    },
+    computed: {
+        account: function () {
+            let a = (this.product.price*100)/(this.product.price_y*100)*10
+            return a.toFixed(1)
+        }
     }
 }
 </script>
@@ -74,8 +88,16 @@ export default {
     .van-cell:not(:last-child)::after{
         border:0;
     }
+    /*.van-card {*/
+    /*    padding: 10px 14px;*/
+    /*}*/
+    .van-card__content {
+        height: 100px;
+    }
     .van-card__title{
-        font-size: 14px;
+        font-size: 16px;
+        line-height: 24px;
+        max-height: 24px;
     }
     .van-cell__title {
         flex: 10;
@@ -91,23 +113,31 @@ export default {
       color: #e93b3d;
       font-size: 10px;
         overflow: hidden;
-        height: 24px;
+        height: 40px;
+        line-height: 40px;
       span {
-        font-size: 16px;
+        font-size: 18px;
             margin-right: 5px;
       }
       .van-tag{
         font-size: 12px;
       }
+        .account {
+            border: 1px solid #07c160;
+            border-radius: 12%;
+            color: #07c160;
+            font-size: 12px;
+            padding: 2px 4px;
+        }
     }
     .price_y {
         color:#b6bcb8;
         text-decoration:line-through;
     }
     .author{
-        color:#666666;
+        color:#9e9e9e;
         font-size:12px;
-        line-height: 14px;
+        line-height: 18px;
     }
     .van-stepper{
         position: absolute;

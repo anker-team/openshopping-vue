@@ -266,10 +266,12 @@ export default {
                 goodsID: this.$route.params.id,
                 fangshi: this.collection === "yes" ? "no" : "yes",
                 price: this.detail.price,
-                y_price: this.detail.price_y,
+                price_y: this.detail.price_y,
                 imgURL: this.detail.imageURL,
                 title: this.detail.title,
                 kucun: this.detail.kucun,
+                author: this.detail.author,
+                publisher: this.detail.publisher,
             }
         }).then(response => {
             this.collection = this.collection === "yes" ? "no" : "yes"
@@ -302,10 +304,12 @@ export default {
                 goodsID: data.goodsId,
                 num: data.selectedNum,
                 price: data.selectedSkuComb.price/100,
-                y_price: this.detail.price_y,
+                price_y: this.detail.price_y,
                 imgURL: this.detail.imageURL,
                 title: this.detail.title,
-                kucun: data.selectedSkuComb.stock_num
+                kucun: data.selectedSkuComb.stock_num,
+                author: this.detail.author,
+                publisher: this.detail.publisher,
             }
         }).then(response => {
             this.$toast.success('加入成功');
