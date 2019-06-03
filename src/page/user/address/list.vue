@@ -2,8 +2,7 @@
 <div>
 
     <headerNav title="我的地址"/>
-    <p style="line-height: 0.8rem;">test</p>
-    <van-address-list
+    <van-address-list style="margin-top:46px"
   v-model="chosenAddressId"
   :class="isSelect?'':'hideselect'"
   :list="list"

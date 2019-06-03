@@ -1,8 +1,7 @@
 <template>
   <div class="order">
      <headerNav title="确认订单"/>
-    <p style="line-height: 0.8rem;">test</p>
-     <van-cell
+     <van-cell style="margin-top:46px"
       center
       :border="false"
       class="contact-card"

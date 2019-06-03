@@ -1,8 +1,7 @@
 <template>
 <div>
     <headerNav title="我的收藏"/>
-    <p style="line-height: 0.8rem;">test</p>
-    <van-list
+    <van-list style="margin-top:46px"
         v-model="loading"
         :finished="finished"
         @load="onLoad"

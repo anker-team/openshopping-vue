@@ -1,7 +1,6 @@
 <template>
 <div>
     <headerNav title="购物车"/>
-    <p style="line-height: 0.9rem;">test</p>
   <div class="card" v-if="cartNotEmpty">
        <van-cell  :value="editText?'编辑商品': '退出编辑'" class="head" @click="editBooks">
         <template slot="title">
@@ -250,6 +249,7 @@ export default {
 .card{
   background: #f7f7f7;
   .van-submit-bar__bar {
+      margin-top:46px;
       border-top: 1px solid #f7f7f7;
       .van-checkbox{
         padding-left: 5px;
