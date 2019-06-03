@@ -7,7 +7,7 @@
         @load="onLoad"
         >
         <div v-for="(item,index) in list" :key="index">
-            <router-link :to="{ name: 'product', params: {id: item.goodsID}}">
+            <router-link :to="{ name: 'product', params: {id: item.goodsID}, query: {from: item.from}}">
                 <van-swipe-cell :right-width="65" :on-close="onClose(item)">
                     <product-card :product='item' />
                         <span slot="right" >删除</span>
