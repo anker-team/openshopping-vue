@@ -7,7 +7,7 @@
         <div style="height: 4rem;margin-top: 46px;position: relative;">
 <!--            <img :src="thumb" style="width: 5rem; height: 6rem;margin:0 auto;">-->
 <!--            <img :src="thumb" style="width: 100%; height: 100%;margin:0 auto;background-color: #fff">-->
-            <img :src="thumb" style="width: auto;height:80%;position:absolute;left: 33%;top: 10%;">
+            <img :src="imgUrlCompute" style="width: auto;height:80%;position:absolute;left: 33%;top: 10%;">
 
         </div>
       </van-swipe-item>
@@ -248,6 +248,7 @@ export default {
         collColor: "",
         bookNum: 1,   //选择书籍数量
         canShow: false,  //是否直接显示模板
+        img: '',   //图片链接
     };
   },
   methods: {
@@ -360,6 +361,19 @@ export default {
         discountNew: function(){
             let a = (this.detail.price*100)/(this.detail.price_y*100)*10
             return a.toFixed(1)
+        },
+        imgUrlCompute: function () {
+            let img = new Image();
+            img.src = this.imgs[0]
+
+            img.onload =  () => {
+                if (img.width == 293 && img.height == 286) {
+                    this.img = "http://api.lizengyi.com/static/img/noPhoto.jpg"
+                } else {
+                    this.img = this.imgs[0]
+                }
+            }
+            return this.img
         }
     }
 };

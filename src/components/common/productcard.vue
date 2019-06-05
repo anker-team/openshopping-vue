@@ -6,7 +6,7 @@
         style="background:#fff;"
         >
             <template slot="thumb">
-                <img :src="product.imgURL"/>
+                <img :src="imgUrlCompute"/>
                 <p v-if="product.imageTag!=null&&product.imageTag!=''" class="image_tag">{{product.imageTag}}</p>
             </template>
             <template slot="tags">
@@ -74,6 +74,17 @@ export default {
         account: function () {
             let a = (this.product.price*100)/(this.product.price_y*100)*10
             return a.toFixed(1)
+        },
+        imgUrlCompute: function () {
+            let img = new Image();
+            img.src = this.product.imgURL
+
+            img.onload =  () => {
+                if (img.width == 293 && img.height == 286) {
+                    this.product.imgURL = "http://api.lizengyi.com/static/img/noPhoto.jpg"
+                }
+            }
+            return this.product.imgURL
         }
     }
 }

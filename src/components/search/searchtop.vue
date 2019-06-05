@@ -34,7 +34,7 @@ export default {
     },
     methods:{
         onSearch() {
-            console.log(this.value);
+            this.$router.push('/search/5465'+'?word='+this.value);
         },
         onBack() {
             history.back();

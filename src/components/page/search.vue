@@ -7,7 +7,7 @@
                 <div class="cell field" :style="data.textalign=='left'?'':'width: 80px;'">
                     <div class="cell__value cell__value--alone">
                         <div class="field__body">
-                            <input type="search" :placeholder="data.keyword==''||data.keyword==undefined?'商品搜索':data.keyword" class="field__control"  />
+                            <input id="search" type="search" :placeholder="data.keyword==''||data.keyword==undefined?'商品搜索':data.keyword" class="field__control" @keyup.enter="submit" />
                         </div>
                     </div>
                 </div>
@@ -26,6 +26,12 @@ export default {
     },
     props:{
         data:Object
+    },
+    methods: {
+        submit(){
+            let value = document.getElementById("search").value
+            this.$router.push('/search/5465'+'?word='+value);
+        }
     },
     created:function(){
         if(this.data.position=='fixed'){

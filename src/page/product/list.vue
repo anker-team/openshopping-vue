@@ -1,5 +1,5 @@
 <template>
-    <div class="product-list" @scroll="handleScroll()">
+    <div class="product-list" @scroll="handleScroll()" v-if="searchNotEmpty">
         <searchtop/>
 <!--        <div class="filterbar">-->
 <!--            <ul :class="filtersort?'show':''">-->
@@ -171,12 +171,20 @@
         </div>
         <navigate/>
     </div>
+    <div style="text-align:center;color:gray;font-size:0.5rem;" v-else>
+        <searchtop/>
+        <img src="http://api.lizengyi.com/static/img/cat_null.png" />
+        <div>暂无书籍</div>
+        <navigate />
+    </div>
 </template>
 
 <script>
 import searchtop from "../../components/search/searchtop";
 import axios from "axios";
 import Navigate from "../../components/footer/navigate";
+import Cookies from "js-cookie";
+
 
 export default {
   components: {
@@ -195,7 +203,8 @@ export default {
       imgUrl: require("../../assets/images/load.gif"),
       status:1,
       isShow:true,
-      successShow: false
+      successShow: false,
+      searchNotEmpty: true,
     };
   },
   methods: {
@@ -213,6 +222,9 @@ export default {
         this.$router.push('/product/'+id+'?from='+from);
     },
       scrollBottom() {
+          if (this.$route.params.id === '5465'){
+              return ;
+          }
           if (((window.screen.height + document.body.scrollTop) > (document.body.clientHeight)) && this.scroll === true && this.status === 1){
               this.scroll = false;
               this.page+=1;
@@ -235,23 +247,65 @@ export default {
               this.$toast.success("全部加载完成")
               this.successShow = true
           }
+      },
+      //路由发生变化(搜索)执行
+      getData(){
+          this.searchNotEmpty = true
+          this.booklist = []
+          this.isShow=true;
+          axios.get("http://api.lizengyi.com/index.php",{
+              params: {
+                  s: "index/Api/search",
+                  userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+                  key: this.$route.query.word,
+              }
+          }).then(response => {
+              this.status = response.data.status
+              this.booklist = response.data.result
+              this.isShow=false;
+              if(response.data.count === 0){
+                  this.searchNotEmpty = false
+              } else {
+                  this.searchNotEmpty = true
+              }
+          });
       }
   },
     mounted () {
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.scrollBottom)
     },
-    created:function(){
-        axios.get("http://api.lizengyi.com/index.php",{
-            params: {
-                s: "index/Api/getBookList",
-                page: 1,
-                typeID: this.$route.params.id,
-            }
-        }).then(response => {
-            this.status = response.data.status
-            this.booklist = response.data.result
-        });
+    created:function(){ //搜索
+      if (this.$route.params.id === '5465'){
+          axios.get("http://api.lizengyi.com/index.php",{
+              params: {
+                  s: "index/Api/search",
+                  userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+                  key: this.$route.query.word,
+              }
+          }).then(response => {
+              this.status = response.data.status
+              this.booklist = response.data.result
+              this.isShow=false;
+              if(response.data.count === 0){
+                  this.searchNotEmpty = false
+              }
+          });
+      } else {
+          axios.get("http://api.lizengyi.com/index.php",{
+              params: {
+                  s: "index/Api/getBookList",
+                  page: 1,
+                  typeID: this.$route.params.id,
+              }
+          }).then(response => {
+              this.status = response.data.status
+              this.booklist = response.data.result
+          });
+      }
+    },
+    watch: {
+      "$route": "getData"
     }
 };
 </script>
