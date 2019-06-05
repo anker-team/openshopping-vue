@@ -112,6 +112,10 @@ export default {
   methods: {
     onSubmit() {
       if (this.name !== '') {
+        this.$dialog.confirm({
+          title:'确认发货',
+          message: '平台采用货到付款的方式,点击确认按钮,我们将为您配送图书'
+        }).then(() => {
           axios.get("http://api.lizengyi.com/index.php",{
             params: {
               s: "index/Api/submitOrder",
@@ -123,8 +127,11 @@ export default {
               z_price: this.finalPrice,
             }
           }).then(response => {
-            this.$toast("提交成功");
+            this.$router.push('/home')
           });
+        }).catch(()=>{
+          this.$toast('订单取消')
+        });
       } else {
         this.$toast("请先选择/添加收货地址!")
       }

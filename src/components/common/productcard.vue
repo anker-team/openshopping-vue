@@ -2,7 +2,7 @@
     <van-cell-group class="additional">
         <van-card
         :title="product.title"
-        :num="(iscard?null:product.num)"
+        :num="(iscard?null:null)"
         style="background:#fff;"
         >
             <template slot="thumb">
@@ -22,12 +22,13 @@
                                <span v-else>未知</span>
                     </span>
                 </div>
-                <p class="price" v-if="product.price!=null&&product.price!=''" >
-                    ￥<span>{{product.price}}</span>
-                    <span class="account">
+                <p class="price" v-if="product.price!=null&&product.price!=''" style="font-size: 18px;">
+                    ￥<span style="font-size: 18px;">{{product.price}}</span>
+                    <span class="account" style="font-size: 12px;">
                         {{account}}折
                     </span>
                     <van-tag v-if="product.tags!=null" v-for="tag in product.tags" :key="tag" plain type="danger">{{tag}}</van-tag>
+                    <span v-if="$route.path.indexOf('order') !== -1" style="float:right;color: #000;font-weight: 100;font-size:14px;color:#b19f9f">x{{product.num}}</span>
                 </p>
 <!--                <div>-->
 <!--                    <van-button plain type="primary" size="mini">删除</van-button><span></span>-->
