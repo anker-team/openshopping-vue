@@ -232,7 +232,7 @@ export default {
                   params: {
                       s: "index/Api/getBookList",
                       page: this.page,
-                      typeID: this.$route.params.id,
+                      typeID: typeof(this.$route.params.typeid) == 'undefined' ? Cookies.get('typeid') : this.$route.params.typeid,
                   }
               }).then(response => {
                   for(const value of response.data.result){
@@ -250,6 +250,9 @@ export default {
       },
       //路由发生变化(搜索)执行
       getData(){
+        if(this.$route.path.indexOf('/search/5465') == -1) {
+            return ;
+        }
           this.searchNotEmpty = true
           this.booklist = []
           this.isShow=true;
@@ -292,11 +295,12 @@ export default {
               }
           });
       } else {
+          Cookies.set('typeid', this.$route.params.typeid)
           axios.get("http://api.lizengyi.com/index.php",{
               params: {
                   s: "index/Api/getBookList",
                   page: 1,
-                  typeID: this.$route.params.id,
+                  typeID: this.$route.params.typeid,
               }
           }).then(response => {
               this.status = response.data.status
