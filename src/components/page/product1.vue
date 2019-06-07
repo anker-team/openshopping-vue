@@ -11,12 +11,12 @@
         <li v-for="(item,index) in productlist" :key="index" style="width:31%;background-color: #fff;margin:0.08rem;float:left;" :class="'cap-goods-list__wrapper  '+(data.ParameterDictionary.type=='3'?(index%3==0?'cap-goods-list__wrapper--hybrid-big ':'cap-goods-list__wrapper--hybrid-small '):'')">
             <router-link style="margin:3px;" :class="'cap-goods-list__item cap-goods-list__item--'+data.classname+' '+data.ParameterDictionary.showtype+' '+data.aclass" :to="'/product/'+item.id">
                 <div class="cap-goods-list__photo" style="min-height:0;padding-top:100%;height:0;">
-                    <img class="cap-goods-list__img lazy lazyload" v-lazy="item.subpic+'?w='+((data.ParameterDictionary.type=='1'||data.ParameterDictionary.type=='3')?'750':'375')" style="height:100%;width:auto" />
+                    <img class="cap-goods-list__img lazy lazyload" v-lazy="item.imageURL+'?w='+((data.ParameterDictionary.type=='1'||data.ParameterDictionary.type=='3')?'750':'375')" style="height:100%;width:auto" />
                 </div>
                 <div :class="'cap-goods-list__info has-title has-price '+(data.ParameterDictionary.showtype == 'card'?'has-btn':'')">
                     <h3 class="title" style="text-align: center;height: 24px;line-height: 28px">{{item.title}}</h3>
                     <p class="sale-info">
-                        <span class="sale-price">¥ {{item.price_d}}</span>
+                        <span class="sale-price">¥ {{item.price}}</span>
                     </p>
                 </div>
                 <div v-if="data.ParameterDictionary.showtype == 'card'" class="cap-goods-list__buy-btn-wrapper cap-goods-list__buy-btn-wrapper--4">
@@ -78,8 +78,12 @@ export default {
         //    this.productlist=response;
         // })
         // console.log(this.productlist)
-        axios.get('http://media.newscctv.cn/book/api.php/Index/index').then(response => {
-            this.productlist=response.data.data.recommended;
+        axios.get('http://api.lizengyi.com', {
+            params: {
+                s: "index/Api/getIndexTuijian",
+            }
+        }).then(response => {
+            this.productlist=response.data;
         })
 
     }
