@@ -279,7 +279,7 @@ export default {
         window.addEventListener('scroll', this.scrollBottom)
     },
     created:function(){ //搜索
-      if (this.$route.params.id === '5465'){
+      if (this.$route.params.typeid === '5465'){
           axios.get("http://api.lizengyi.com/index.php",{
               params: {
                   s: "index/Api/search",
