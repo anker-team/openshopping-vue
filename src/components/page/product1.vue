@@ -9,7 +9,7 @@
         <span style="font-weight:normal ; ;font-size:0.5rem;">为您推荐</span>
         </div>
         <li v-for="(item,index) in productlist" :key="index" style="width:31%;background-color: #fff;margin:0.08rem;float:left;" :class="'cap-goods-list__wrapper  '+(data.ParameterDictionary.type=='3'?(index%3==0?'cap-goods-list__wrapper--hybrid-big ':'cap-goods-list__wrapper--hybrid-small '):'')">
-            <router-link style="margin:3px;" :class="'cap-goods-list__item cap-goods-list__item--'+data.classname+' '+data.ParameterDictionary.showtype+' '+data.aclass" :to="'/product/'+item.id">
+            <router-link style="margin:3px;" :class="'cap-goods-list__item cap-goods-list__item--'+data.classname+' '+data.ParameterDictionary.showtype+' '+data.aclass" :to="'/product/'+item.id+'?from='+item.from">
                 <div class="cap-goods-list__photo" style="min-height:0;padding-top:100%;height:0;">
                     <img class="cap-goods-list__img lazy lazyload" v-lazy="item.imageURL+'?w='+((data.ParameterDictionary.type=='1'||data.ParameterDictionary.type=='3')?'750':'375')" style="height:100%;width:auto" />
                 </div>
