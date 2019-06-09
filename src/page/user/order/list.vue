@@ -3,12 +3,12 @@
      <headerNav title="我的订单"/>
     <van-tabs v-model="active">
         <van-tab title="全部">
-            
-            <div v-for="(item,index) in list" :key="index">
+
+            <div v-for="(item,index) in allList" :key="index">
                 <van-cell-group class="order-item" >
                     <van-panel :title="'订单：'+item.ordercode" :status="item.state"  >
                     <div slot="header">
-                        <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.state" :to="'/user/order/info/'+item.orderid"/>
+                        <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.statusName" :to="'/user/order/info/'+item.id"/>
                     </div>
                         <div>
                             <router-link :to="'/user/order/info/'+item.orderid">
@@ -18,14 +18,14 @@
                             <div  v-if="item.products.length>1" class="more" >
                                 <div class="item" v-for="(product,i) in item.products" :key="i">
                                     <div >
-                                        <img :src="product.imageURL"/>
+                                        <img :src="product.imgURL"/>
                                     </div>
                                 </div>
                             </div>
                             </router-link>
                         </div>
                         <div slot="footer">
-                            <span class="total">总价：￥8154898.89</span>
+                            <span class="total">总价：￥{{item.z_price}}</span>
                             <van-button size="small">确认收货</van-button>
                             <van-button size="small" type="danger">支付</van-button>
                         </div>
@@ -34,21 +34,29 @@
             </div>
 
         </van-tab>
-        <van-tab title="待付款">内容 2</van-tab>
-        <van-tab title="待收货">内容 3</van-tab>
+        <van-tab title="待发货">
+
+
+
+        </van-tab>
+        <van-tab title="配送中">内容 3</van-tab>
         <van-tab title="已完成">内容 4</van-tab>
-        <van-tab title="已取消">内容 5</van-tab>
     </van-tabs>
 </div>
 </template>
 
 <script>
+import axios from "axios";
+import Cookies from "js-cookie";
+
 export default {
     components:{
     },
     data(){
         return{
-            active:0,
+            active:1,
+
+            allList: [],
             
             list:[
                 {
@@ -129,6 +137,20 @@ export default {
                 },
             ]
         }
+    },
+    created() {
+        this.active = this.$route.params.id;
+        axios.get('http://api.lizengyi.com', {
+            params: {
+                s: "index/Api/getOrderList",
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+            }
+        }).then(response => {
+            this.allList = response.data.all   //所有
+            // response.data.UnRecieveTotal   //代发货
+            // response.data.OnRoad    //在路上
+            // response.data.AfterSaleTotal   //已完成
+        });
     }
 }
 </script>

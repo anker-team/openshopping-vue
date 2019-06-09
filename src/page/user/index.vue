@@ -30,10 +30,10 @@
             <van-icon name="logistics">
               <van-info :info="data.OnRoad"   />
             </van-icon>
-            <div>待发货</div>
+            <div>配送中</div>
           </van-col>
         </router-link>
-        <router-link  to="/user/order/2">
+        <router-link  to="/user/order/3">
           <van-col span="6">
             <van-icon name="point-gift">
             </van-icon>
