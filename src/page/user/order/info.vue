@@ -1,5 +1,5 @@
 <template>
-    <div style="background: #f7f7f7;">
+    <div style="background: #f7f7f7; margin-top: 46px">
         <headerNav title="订单详情"/>
         <van-steps :active="active">
             <van-step>提交订单</van-step>
@@ -47,8 +47,10 @@
 </template>
 
 <script>
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-export default {
+    export default {
     data(){
         return{
             active:1,
@@ -67,6 +69,17 @@ export default {
                 },
             ]
         }
+    },
+    created() {
+        axios.get('http://api.lizengyi.com', {
+            params: {
+                s: 'index/Api/getOrderDetail',
+                userID: Cookies.get('userid') ? Cookies.get('userid') : 6,
+                orderID: this.$route.params.id,
+            }
+        }).then(response => {
+
+        });
     }
 }
 </script>

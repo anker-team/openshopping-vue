@@ -11,7 +11,7 @@
                         <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.statusName" :to="'/user/order/info/'+item.id"/>
                     </div>
                         <div>
-                            <router-link :to="'/user/order/info/'+item.orderid">
+                            <router-link :to="'/user/order/info/'+item.id">
                             <div v-if="item.products.length==1" v-for="(product,i) in item.products" :key="i">
                                 <product-card :product='product' />
                             </div>
@@ -43,7 +43,7 @@
                             <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.statusName" :to="'/user/order/info/'+item.id"/>
                         </div>
                         <div>
-                            <router-link :to="'/user/order/info/'+item.orderid">
+                            <router-link :to="'/user/order/info/'+item.id">
                                 <div v-if="item.products.length==1" v-for="(product,i) in item.products" :key="i">
                                     <product-card :product='product' />
                                 </div>
@@ -75,7 +75,7 @@
                             <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.statusName" :to="'/user/order/info/'+item.id"/>
                         </div>
                         <div>
-                            <router-link :to="'/user/order/info/'+item.orderid">
+                            <router-link :to="'/user/order/info/'+item.id">
                                 <div v-if="item.products.length==1" v-for="(product,i) in item.products" :key="i">
                                     <product-card :product='product' />
                                 </div>
@@ -107,7 +107,7 @@
                             <van-cell class="title" :title="'订单：'+item.ordercode" :value="item.statusName" :to="'/user/order/info/'+item.id"/>
                         </div>
                         <div>
-                            <router-link :to="'/user/order/info/'+item.orderid">
+                            <router-link :to="'/user/order/info/'+item.id">
                                 <div v-if="item.products.length==1" v-for="(product,i) in item.products" :key="i">
                                     <product-card :product='product' />
                                 </div>
