@@ -34,9 +34,9 @@
         </van-cell-group>
         <div style="height:15px;"></div>
         <van-cell-group class="total">
-            <van-cell title="商品总额" :value="products_new.z_price" />
-            <van-cell title="运费" value="+ 0.00" />
-            <van-cell title="实付金额" :value="products_new.z_price" style="font-weight: 700;" />
+            <van-cell title="商品总额" :value="(products_new.z_price - products_new.yunfei).toFixed(2)" />
+            <van-cell title="运费" :value="'+ '+products_new.yunfei.toFixed(2)" />
+            <van-cell title="实付金额" :value="products_new.z_price.toFixed(2)" style="font-weight: 700;" />
         </van-cell-group>
         <div class="footer">
             <div class="munu">
@@ -86,6 +86,7 @@ import Cookies from 'js-cookie';
             this.active = response.data.products.status  //运送状态
             this.address = response.data.addressData     //地址
             this.logistics = response.data.wulius       //物流
+
         });
     }
 }
