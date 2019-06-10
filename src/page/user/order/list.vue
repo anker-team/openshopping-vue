@@ -131,6 +131,8 @@
 
         </van-tab>
     </van-tabs>
+    <navigate />
+
 </div>
 </template>
 
