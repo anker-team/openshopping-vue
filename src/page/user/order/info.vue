@@ -34,9 +34,9 @@
         </van-cell-group>
         <div style="height:15px;"></div>
         <van-cell-group class="total">
-            <van-cell title="商品总额" :value="(products_new.z_price - products_new.yunfei).toFixed(2)" />
-            <van-cell title="运费" :value="'+ '+products_new.yunfei.toFixed(2)" />
-            <van-cell title="实付金额" :value="products_new.z_price.toFixed(2)" style="font-weight: 700;" />
+            <van-cell title="商品总额" :value="Number(products_new.z_price - products_new.yunfei).toFixed(2)" />
+            <van-cell title="运费" :value="'+ '+Number(products_new.yunfei).toFixed(2)" />
+            <van-cell title="实付金额" :value="Number(products_new.z_price).toFixed(2)" style="font-weight: 700;" />
         </van-cell-group>
         <div class="footer">
             <div class="munu">
