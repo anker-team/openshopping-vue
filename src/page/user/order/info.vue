@@ -7,7 +7,8 @@
             <van-step>交易完成</van-step>
         </van-steps>
         
-        <van-cell class="logistics" to="/user/order/logistics/1" title="您的订单已由本人签收（已在配送员处采用无纸化方式签收本订单）。感谢您在京东购物，欢迎再次光临。参加评价还能赢取京豆哟。" label="2018-08-31 21:04:03" icon="logistics" is-link />
+<!--        <van-cell class="logistics" to="/user/order/logistics/1" title="您的订单已由本人签收（已在配送员处采用无纸化方式签收本订单）。感谢您在京东购物，欢迎再次光临。参加评价还能赢取京豆哟。" label="2018-08-31 21:04:03" icon="logistics" is-link />-->
+        <van-cell class="logistics" to="/user/order/logistics/1" :title="logistics.info" :label="logistics.time" icon="logistics" is-link />
         <div style="height:15px;"></div>
         <van-cell-group>
             <van-cell
@@ -27,15 +28,15 @@
         </div>
         <div style="height:15px;"></div>
         <van-cell-group>
-            <van-cell title="订单编号" value="18081609422771742" />
-            <van-cell title="下单时间" value="2018-08-16 09:42:27" />
-            <van-cell title="订单状态" value="配送中" />
+            <van-cell title="订单编号" :value="products_new.ordercode" />
+            <van-cell title="下单时间" :value="products_new.addTime" />
+            <van-cell title="订单状态" :value="products_new.statusName" />
         </van-cell-group>
         <div style="height:15px;"></div>
         <van-cell-group class="total">
-            <van-cell title="商品总额" value="9.99" />
+            <van-cell title="商品总额" :value="products_new.z_price" />
             <van-cell title="运费" value="+ 0.00" />
-            <van-cell title="实付金额" value="9.99" style="font-weight: 700;" />
+            <van-cell title="实付金额" :value="products_new.z_price" style="font-weight: 700;" />
         </van-cell-group>
         <div class="footer">
             <div class="munu">
@@ -70,6 +71,7 @@ import Cookies from 'js-cookie';
             ],
             products_new: {},
             address: {},
+            logistics: {},  //物流
         }
     },
     created() {
@@ -80,9 +82,10 @@ import Cookies from 'js-cookie';
                 orderID: this.$route.params.id,
             }
         }).then(response => {
-            this.products_new = response.data.products
-            this.active = response.data.products.status
-            this.address = response.data.addressData
+            this.products_new = response.data.products   //产品
+            this.active = response.data.products.status  //运送状态
+            this.address = response.data.addressData     //地址
+            this.logistics = response.data.wulius       //物流
         });
     }
 }
