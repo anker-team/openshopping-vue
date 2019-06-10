@@ -153,6 +153,7 @@ created() {
     }
   }).then(response => {
     this.orders = response.data.catsData
+    this.freight = response.data.yunfei
     if (typeof(Cookies.get('address_id')) !== "undefined") { //直接从cookie读地址
       this.name = Cookies.get('address_name')
       let tel = Cookies.get('address_tel')

@@ -2,7 +2,7 @@
 <div>
     <van-swipe :autoplay="3000" v-if="data.type=='1'" :style="'height:'+height+'px'"  >
         <van-swipe-item v-for="(image,index) in data.imagelist" :key="index" >
-            <a :href="image.url">
+            <a :href="image.link">
                 <img  v-lazy="image.src+''" style="width: 100%;" />
             </a>
         </van-swipe-item>
