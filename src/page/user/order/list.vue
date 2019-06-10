@@ -24,10 +24,10 @@
                             </div>
                             </router-link>
                         </div>
-                        <div slot="footer">
+                        <div slot="footer" style="height: 20px;">
                             <span class="total">总价：￥{{item.z_price}}</span>
-                            <van-button size="small">确认收货</van-button>
-                            <van-button size="small" type="danger">支付</van-button>
+<!--                            <van-button size="small">确认收货</van-button>-->
+<!--                            <van-button size="small" type="danger">支付</van-button>-->
                         </div>
                     </van-panel>
                 </van-cell-group>
@@ -56,10 +56,10 @@
                                 </div>
                             </router-link>
                         </div>
-                        <div slot="footer">
+                        <div slot="footer" style="height: 20px;">
                             <span class="total">总价：￥{{item.z_price}}</span>
-                            <van-button size="small">确认收货</van-button>
-                            <van-button size="small" type="danger">支付</van-button>
+<!--                            <van-button size="small">确认收货</van-button>-->
+<!--                            <van-button size="small" type="danger">支付</van-button>-->
                         </div>
                     </van-panel>
                 </van-cell-group>
@@ -88,10 +88,10 @@
                                 </div>
                             </router-link>
                         </div>
-                        <div slot="footer">
+                        <div slot="footer" style="height: 20px;">
                             <span class="total">总价：￥{{item.z_price}}</span>
-                            <van-button size="small">确认收货</van-button>
-                            <van-button size="small" type="danger">支付</van-button>
+<!--                            <van-button size="small">确认收货</van-button>-->
+<!--                            <van-button size="small" type="danger">支付</van-button>-->
                         </div>
                     </van-panel>
                 </van-cell-group>
@@ -120,10 +120,10 @@
                                 </div>
                             </router-link>
                         </div>
-                        <div slot="footer">
+                        <div slot="footer" style="height: 20px;">
                             <span class="total">总价：￥{{item.z_price}}</span>
-                            <van-button size="small">确认收货</van-button>
-                            <van-button size="small" type="danger">支付</van-button>
+<!--                            <van-button size="small">确认收货</van-button>-->
+<!--                            <van-button size="small" type="danger">支付</van-button>-->
                         </div>
                     </van-panel>
                 </van-cell-group>
@@ -275,7 +275,7 @@ export default {
     }
     .total{
     position: absolute;
-    top: 17px;
+    top: 10px;
     left: 15px;
     font-size: 13px;
     }
