@@ -15,14 +15,14 @@
             :border="false"
             >
       <template>
-        <div>张三 138****6520</div>
-        <div>广东省深圳市南山区科技园 </div>
+        <div>{{address.name}} {{address.tel}}</div>
+        <div>{{address.area}} </div>
       </template>
     </van-cell>
         </van-cell-group>
         
         <div style="height:15px;"></div>
-        <div v-for="(product,i) in products" :key="i">
+        <div v-for="(product,i) in products_new.goodsList" :key="i">
           <product-card :product='product' />
         </div>
         <div style="height:15px;"></div>
@@ -53,7 +53,7 @@ import Cookies from 'js-cookie';
     export default {
     data(){
         return{
-            active:1,
+            active:0,
             products:[
                 {
                     imageURL:'http://source.lizengyi.com/imgs/19e33c9b-6c22-4a4b-96da-1cb7afb32712',
@@ -67,7 +67,9 @@ import Cookies from 'js-cookie';
                     price:'499',
                     quantity:2
                 },
-            ]
+            ],
+            products_new: {},
+            address: {},
         }
     },
     created() {
@@ -78,7 +80,9 @@ import Cookies from 'js-cookie';
                 orderID: this.$route.params.id,
             }
         }).then(response => {
-
+            this.products_new = response.data.products
+            this.active = response.data.products.status
+            this.address = response.data.addressData
         });
     }
 }

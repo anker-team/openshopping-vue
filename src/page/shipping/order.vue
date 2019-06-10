@@ -156,7 +156,7 @@ created() {
     if (typeof(Cookies.get('address_id')) !== "undefined") { //直接从cookie读地址
       this.name = Cookies.get('address_name')
       let tel = Cookies.get('address_tel')
-      this.tel = tel.slice(0,3)+"****"+tel.slice(6,10)
+      this.tel = tel.slice(0,3)+"****"+tel.slice(7,11)
       this.address = Cookies.get("address_addr")
       this.addressid = Cookies.get("address_id")
     } else {
