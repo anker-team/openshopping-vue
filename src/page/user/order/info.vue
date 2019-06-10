@@ -8,7 +8,7 @@
         </van-steps>
         
 <!--        <van-cell class="logistics" to="/user/order/logistics/1" title="您的订单已由本人签收（已在配送员处采用无纸化方式签收本订单）。感谢您在京东购物，欢迎再次光临。参加评价还能赢取京豆哟。" label="2018-08-31 21:04:03" icon="logistics" is-link />-->
-        <van-cell class="logistics" to="/user/order/logistics/1" :title="logistics.info" :label="logistics.time" icon="logistics" is-link />
+        <van-cell class="logistics" :to="'/user/order/logistics/'+logistics.orderID" :title="logistics.info" :label="logistics.time" icon="logistics" is-link />
         <div style="height:15px;"></div>
         <van-cell-group>
             <van-cell
