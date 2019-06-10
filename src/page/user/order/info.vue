@@ -38,12 +38,13 @@
             <van-cell title="运费" :value="'+ '+Number(products_new.yunfei).toFixed(2)" />
             <van-cell title="实付金额" :value="Number(products_new.z_price).toFixed(2)" style="font-weight: 700;" />
         </van-cell-group>
-        <div class="footer">
-            <div class="munu">
-                <van-button size="small">确认收货</van-button>
-                <van-button size="small" type="danger">支付</van-button>
-            </div>
-        </div>
+<!--        <div class="footer">-->
+<!--            <div class="munu">-->
+<!--                <van-button size="small">确认收货</van-button>-->
+<!--                <van-button size="small" type="danger">支付</van-button>-->
+<!--            </div>-->
+<!--        </div>-->
+        <navigate />
     </div>
 </template>
 
