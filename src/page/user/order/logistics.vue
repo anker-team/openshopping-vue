@@ -12,7 +12,7 @@
 <!--            <van-cell title="快递方式" value="顺丰快递" />-->
 <!--            <van-cell title="快递单号" value="51234548875645645" />-->
 <!--        </van-cell-group>-->
-        <van-steps direction="vertical" :active="data.length-2" active-color="#f60" style="margin-top: 15px;">
+        <van-steps direction="vertical" :active="data.length-1" active-color="#f60" style="margin-top: 15px;">
             <van-step v-for="(item,index) in data" :key="index">
                 <h3>{{item.info}}</h3>
                 <p>{{item.time}}</p>
@@ -29,7 +29,7 @@
         </van-tab>
 <!--        <van-tab title="包裹2">内容 3</van-tab>-->
     </van-tabs>
-        
+        <navigate />
     </div>
 </template>
 
